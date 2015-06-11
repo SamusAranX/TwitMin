@@ -7,17 +7,64 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		560855D01B28C6E10081487C /* TAAdaptiveSpaceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 560855CF1B28C6E10081487C /* TAAdaptiveSpaceItem.m */; };
+		560855D31B28C6FE0081487C /* TAAdaptiveSpaceItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 560855D21B28C6FE0081487C /* TAAdaptiveSpaceItemView.m */; };
+		560855E61B28EE9D0081487C /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 560855E11B28EE9D0081487C /* DDHotKeyCenter.m */; };
+		560855E71B28EE9D0081487C /* DDHotKeyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 560855E31B28EE9D0081487C /* DDHotKeyTextField.m */; };
+		560855E81B28EE9D0081487C /* DDHotKeyUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 560855E51B28EE9D0081487C /* DDHotKeyUtilities.m */; };
+		560855EB1B28F2A00081487C /* KeyMaskHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 560855EA1B28F2A00081487C /* KeyMaskHelper.m */; };
+		5651ECFA1B2A18FC00A5851C /* TMPreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651ECF91B2A18FC00A5851C /* TMPreferencesWindow.swift */; };
 		565F0C381B2773E8001A86A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565F0C371B2773E8001A86A8 /* AppDelegate.swift */; };
 		565F0C3A1B2773E8001A86A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 565F0C391B2773E8001A86A8 /* Assets.xcassets */; };
 		565F0C3D1B2773E8001A86A8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 565F0C3B1B2773E8001A86A8 /* MainMenu.xib */; };
+		565F0C451B2774C0001A86A8 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 565F0C441B2774C0001A86A8 /* Social.framework */; };
+		565F0C491B277BEE001A86A8 /* TMComposeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565F0C481B277BEE001A86A8 /* TMComposeWindow.swift */; };
+		565F0C771B279DC2001A86A8 /* TwitterText.m in Sources */ = {isa = PBXBuildFile; fileRef = 565F0C761B279DC2001A86A8 /* TwitterText.m */; };
+		565F0C7A1B279DF4001A86A8 /* TwitterTextEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 565F0C791B279DF4001A86A8 /* TwitterTextEntity.m */; };
+		56A8C37C1B2A420200699998 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 56A8C37B1B2A420200699998 /* Credits.rtf */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		565F0C601B2781D2001A86A8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		560855CE1B28C6E10081487C /* TAAdaptiveSpaceItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAdaptiveSpaceItem.h; sourceTree = "<group>"; };
+		560855CF1B28C6E10081487C /* TAAdaptiveSpaceItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAdaptiveSpaceItem.m; sourceTree = "<group>"; };
+		560855D11B28C6FE0081487C /* TAAdaptiveSpaceItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAdaptiveSpaceItemView.h; sourceTree = "<group>"; };
+		560855D21B28C6FE0081487C /* TAAdaptiveSpaceItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAdaptiveSpaceItemView.m; sourceTree = "<group>"; };
+		560855E01B28EE9D0081487C /* DDHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDHotKeyCenter.h; path = ../../../../GitHub/DDHotKey/DDHotKeyCenter.h; sourceTree = "<group>"; };
+		560855E11B28EE9D0081487C /* DDHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyCenter.m; path = ../../../../GitHub/DDHotKey/DDHotKeyCenter.m; sourceTree = "<group>"; };
+		560855E21B28EE9D0081487C /* DDHotKeyTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDHotKeyTextField.h; path = ../../../../GitHub/DDHotKey/DDHotKeyTextField.h; sourceTree = "<group>"; };
+		560855E31B28EE9D0081487C /* DDHotKeyTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyTextField.m; path = ../../../../GitHub/DDHotKey/DDHotKeyTextField.m; sourceTree = "<group>"; };
+		560855E41B28EE9D0081487C /* DDHotKeyUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDHotKeyUtilities.h; path = ../../../../GitHub/DDHotKey/DDHotKeyUtilities.h; sourceTree = "<group>"; };
+		560855E51B28EE9D0081487C /* DDHotKeyUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyUtilities.m; path = ../../../../GitHub/DDHotKey/DDHotKeyUtilities.m; sourceTree = "<group>"; };
+		560855E91B28F2A00081487C /* KeyMaskHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyMaskHelper.h; sourceTree = "<group>"; };
+		560855EA1B28F2A00081487C /* KeyMaskHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyMaskHelper.m; sourceTree = "<group>"; };
+		5651ECF91B2A18FC00A5851C /* TMPreferencesWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPreferencesWindow.swift; sourceTree = "<group>"; };
 		565F0C341B2773E8001A86A8 /* TwitMin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitMin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		565F0C371B2773E8001A86A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		565F0C391B2773E8001A86A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		565F0C3C1B2773E8001A86A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		565F0C3E1B2773E8001A86A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		565F0C441B2774C0001A86A8 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		565F0C481B277BEE001A86A8 /* TMComposeWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMComposeWindow.swift; sourceTree = "<group>"; };
+		565F0C741B279DC2001A86A8 /* TwitMin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TwitMin-Bridging-Header.h"; sourceTree = "<group>"; };
+		565F0C751B279DC2001A86A8 /* TwitterText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterText.h; sourceTree = "<group>"; };
+		565F0C761B279DC2001A86A8 /* TwitterText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterText.m; sourceTree = "<group>"; };
+		565F0C781B279DF4001A86A8 /* TwitterTextEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterTextEntity.h; sourceTree = "<group>"; };
+		565F0C791B279DF4001A86A8 /* TwitterTextEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterTextEntity.m; sourceTree = "<group>"; };
+		56A8C3771B2A3DD000699998 /* TwitMin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TwitMin.entitlements; sourceTree = "<group>"; };
+		56A8C37B1B2A420200699998 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -25,15 +72,43 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				565F0C451B2774C0001A86A8 /* Social.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		560855CD1B28C6C80081487C /* TAAdaptiveSpaceItem */ = {
+			isa = PBXGroup;
+			children = (
+				560855CE1B28C6E10081487C /* TAAdaptiveSpaceItem.h */,
+				560855CF1B28C6E10081487C /* TAAdaptiveSpaceItem.m */,
+				560855D11B28C6FE0081487C /* TAAdaptiveSpaceItemView.h */,
+				560855D21B28C6FE0081487C /* TAAdaptiveSpaceItemView.m */,
+			);
+			name = TAAdaptiveSpaceItem;
+			sourceTree = "<group>";
+		};
+		560855DF1B28EE840081487C /* DDHotKey */ = {
+			isa = PBXGroup;
+			children = (
+				560855E01B28EE9D0081487C /* DDHotKeyCenter.h */,
+				560855E11B28EE9D0081487C /* DDHotKeyCenter.m */,
+				560855E21B28EE9D0081487C /* DDHotKeyTextField.h */,
+				560855E31B28EE9D0081487C /* DDHotKeyTextField.m */,
+				560855E41B28EE9D0081487C /* DDHotKeyUtilities.h */,
+				560855E51B28EE9D0081487C /* DDHotKeyUtilities.m */,
+				560855E91B28F2A00081487C /* KeyMaskHelper.h */,
+				560855EA1B28F2A00081487C /* KeyMaskHelper.m */,
+			);
+			name = DDHotKey;
+			sourceTree = "<group>";
+		};
 		565F0C2B1B2773E8001A86A8 = {
 			isa = PBXGroup;
 			children = (
+				565F0C441B2774C0001A86A8 /* Social.framework */,
 				565F0C361B2773E8001A86A8 /* TwitMin */,
 				565F0C351B2773E8001A86A8 /* Products */,
 			);
@@ -50,12 +125,31 @@
 		565F0C361B2773E8001A86A8 /* TwitMin */ = {
 			isa = PBXGroup;
 			children = (
+				56A8C3771B2A3DD000699998 /* TwitMin.entitlements */,
+				565F0C741B279DC2001A86A8 /* TwitMin-Bridging-Header.h */,
+				560855CD1B28C6C80081487C /* TAAdaptiveSpaceItem */,
+				565F0C731B279D66001A86A8 /* TwitterText */,
+				560855DF1B28EE840081487C /* DDHotKey */,
 				565F0C371B2773E8001A86A8 /* AppDelegate.swift */,
+				565F0C481B277BEE001A86A8 /* TMComposeWindow.swift */,
+				5651ECF91B2A18FC00A5851C /* TMPreferencesWindow.swift */,
 				565F0C391B2773E8001A86A8 /* Assets.xcassets */,
 				565F0C3B1B2773E8001A86A8 /* MainMenu.xib */,
 				565F0C3E1B2773E8001A86A8 /* Info.plist */,
+				56A8C37B1B2A420200699998 /* Credits.rtf */,
 			);
 			path = TwitMin;
+			sourceTree = "<group>";
+		};
+		565F0C731B279D66001A86A8 /* TwitterText */ = {
+			isa = PBXGroup;
+			children = (
+				565F0C751B279DC2001A86A8 /* TwitterText.h */,
+				565F0C761B279DC2001A86A8 /* TwitterText.m */,
+				565F0C781B279DF4001A86A8 /* TwitterTextEntity.h */,
+				565F0C791B279DF4001A86A8 /* TwitterTextEntity.m */,
+			);
+			name = TwitterText;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -68,6 +162,7 @@
 				565F0C301B2773E8001A86A8 /* Sources */,
 				565F0C311B2773E8001A86A8 /* Frameworks */,
 				565F0C321B2773E8001A86A8 /* Resources */,
+				565F0C601B2781D2001A86A8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -84,11 +179,17 @@
 		565F0C2C1B2773E8001A86A8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Peter Wunder";
 				TargetAttributes = {
 					565F0C331B2773E8001A86A8 = {
 						CreatedOnToolsVersion = 7.0;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -116,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				565F0C3A1B2773E8001A86A8 /* Assets.xcassets in Resources */,
+				56A8C37C1B2A420200699998 /* Credits.rtf in Resources */,
 				565F0C3D1B2773E8001A86A8 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,7 +229,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				560855EB1B28F2A00081487C /* KeyMaskHelper.m in Sources */,
+				560855E61B28EE9D0081487C /* DDHotKeyCenter.m in Sources */,
 				565F0C381B2773E8001A86A8 /* AppDelegate.swift in Sources */,
+				560855E81B28EE9D0081487C /* DDHotKeyUtilities.m in Sources */,
+				565F0C771B279DC2001A86A8 /* TwitterText.m in Sources */,
+				5651ECFA1B2A18FC00A5851C /* TMPreferencesWindow.swift in Sources */,
+				560855E71B28EE9D0081487C /* DDHotKeyTextField.m in Sources */,
+				560855D01B28C6E10081487C /* TAAdaptiveSpaceItem.m in Sources */,
+				560855D31B28C6FE0081487C /* TAAdaptiveSpaceItemView.m in Sources */,
+				565F0C491B277BEE001A86A8 /* TMComposeWindow.swift in Sources */,
+				565F0C7A1B279DF4001A86A8 /* TwitterTextEntity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,11 +341,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = TwitMin/TwitMin.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = TwitMin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.peterwunder.TwitMin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TwitMin/TwitMin-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -241,11 +358,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = TwitMin/TwitMin.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = TwitMin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.peterwunder.TwitMin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TwitMin/TwitMin-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -268,6 +389,7 @@
 				565F0C431B2773E8001A86A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
