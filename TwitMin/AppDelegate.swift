@@ -18,9 +18,10 @@ func println<T>(value: T) {
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-	@IBOutlet weak var composeWindow: TMComposeWindow!
-	@IBOutlet weak var preferencesWindow: NSWindow!
+	
+	var tweetWindowController: TMTweetWindowController!
+	var preferencesWindowController: TMPreferencesWindowController!
+	var aboutWindowController: TMAboutWindowController!
 	
 	@IBOutlet weak var statusBarMenu: NSMenu!
 	
@@ -29,7 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	var composeHotKey: DDHotKey!
 
 	func applicationDidFinishLaunching(aNotification: NSNotification) {
-		NSDistributedNotificationCenter.defaultCenter().addObserver(self, selector: "interfaceThemeChanged:", name: "AppleInterfaceThemeChangedNotification", object: nil)
+		NSDistributedNotificationCenter.defaultCenter().addObserver(self, selector: "systemThemeChanged:", name: "AppleInterfaceThemeChangedNotification", object: nil)
 		
 		statusBarItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
 		statusBarItem.menu = statusBarMenu
@@ -37,11 +38,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		statusBarIcon?.template = true
 		statusBarItem.button!.image = statusBarIcon
 		
-		let systemAppearance = (NSUserDefaults.standardUserDefaults().stringForKey("AppleInterfaceStyle") ?? "Light").lowercaseString
-		
-		preferencesWindow.appearance = NSAppearance(named: systemAppearance == "dark" ? NSAppearanceNameVibrantDark : NSAppearanceNameVibrantLight)
-		composeWindow.appearance = NSAppearance(named: systemAppearance == "dark" ? NSAppearanceNameVibrantDark : NSAppearanceNameVibrantLight)
-		composeWindow.initialize()
+		tweetWindowController = TMTweetWindowController(windowNibName: "TMTweetWindow")
+		preferencesWindowController = TMPreferencesWindowController(windowNibName: "TMPreferencesWindow")
+		aboutWindowController = TMAboutWindowController(windowNibName: "TMAboutWindow")
 		
 		hotKeyCenter = DDHotKeyCenter.sharedHotKeyCenter()
 		// I'm using the KeyMaskHelper class below because Xcode is stupid and won't let me use things like NSCommandKeyMask directly
@@ -54,10 +53,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		hotKeyCenter.registerHotKey(composeHotKey)
 	}
 	
-	func interfaceThemeChanged(notification: NSNotification) {
+	func systemThemeChanged(notification: NSNotification) {
 		// If the user changed their system's color scheme, we're gonna know
-		let systemAppearance = (NSUserDefaults.standardUserDefaults().stringForKey("AppleInterfaceStyle") ?? "Light").lowercaseString
-		composeWindow.systemThemeChanged(systemAppearance)
+		let systemAppearanceName = (NSUserDefaults.standardUserDefaults().stringForKey("AppleInterfaceStyle") ?? "Light").lowercaseString
+		let systemAppearance = systemAppearanceName == "dark" ? NSAppearance(named: NSAppearanceNameVibrantDark) : NSAppearance(named: NSAppearanceNameVibrantLight)
+		
+		if tweetWindowController.window != nil && tweetWindowController.window!.visible {
+			tweetWindowController.window?.appearance = systemAppearance
+		}
+		if preferencesWindowController.window != nil && preferencesWindowController.window!.visible {
+			preferencesWindowController.window?.appearance = systemAppearance
+		}
+		if aboutWindowController.window != nil && aboutWindowController.window!.visible {
+			aboutWindowController.window?.appearance = systemAppearance
+		}
 	}
 
 	// IBAction that gets called from the menu bar item
@@ -68,13 +77,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	func actuallyShowTweetWindow() {
 		println("Show Tweet Window!")
 		
-		// Bring window to front, no matter where it is
 		NSApp.activateIgnoringOtherApps(true)
-		
-		if !composeWindow.visible { // The window is not open right now, this makeKeyAndOrderFront call is opening it
-			composeWindow.heyListen()
-		}
-		composeWindow.makeKeyAndOrderFront(nil)
+		tweetWindowController.showWindow(nil)
+	}
+	
+	@IBAction func showAboutWindow(sender: NSMenuItem) {
+		NSApp.activateIgnoringOtherApps(true)
+		aboutWindowController.showWindow(nil)
+		println(aboutWindowController.window)
 	}
 	
 	@IBAction func quitApp(sender: NSMenuItem) {
