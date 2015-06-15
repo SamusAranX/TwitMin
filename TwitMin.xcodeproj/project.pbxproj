@@ -11,8 +11,6 @@
 		560855E71B28EE9D0081487C /* DDHotKeyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 560855E31B28EE9D0081487C /* DDHotKeyTextField.m */; };
 		560855E81B28EE9D0081487C /* DDHotKeyUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 560855E51B28EE9D0081487C /* DDHotKeyUtilities.m */; };
 		560855EB1B28F2A00081487C /* KeyMaskHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 560855EA1B28F2A00081487C /* KeyMaskHelper.m */; };
-		565427051B2B62B800A721BD /* TMPreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565427031B2B62B800A721BD /* TMPreferencesWindowController.swift */; };
-		565427061B2B62B800A721BD /* TMPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 565427041B2B62B800A721BD /* TMPreferencesWindow.xib */; };
 		565427091B2B62EC00A721BD /* TMAboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565427071B2B62EC00A721BD /* TMAboutWindowController.swift */; };
 		5654270A1B2B62EC00A721BD /* TMAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 565427081B2B62EC00A721BD /* TMAboutWindow.xib */; };
 		5654270D1B2B77AC00A721BD /* TMTweetWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5654270B1B2B77AC00A721BD /* TMTweetWindowController.swift */; };
@@ -24,6 +22,8 @@
 		565F0C451B2774C0001A86A8 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 565F0C441B2774C0001A86A8 /* Social.framework */; };
 		565F0C771B279DC2001A86A8 /* TwitterText.m in Sources */ = {isa = PBXBuildFile; fileRef = 565F0C761B279DC2001A86A8 /* TwitterText.m */; };
 		565F0C7A1B279DF4001A86A8 /* TwitterTextEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 565F0C791B279DF4001A86A8 /* TwitterTextEntity.m */; };
+		5685198F1B2F82BF0037C728 /* TMPreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685198E1B2F82BF0037C728 /* TMPreferencesWindowController.swift */; };
+		568519911B2F82C70037C728 /* TMPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 568519901B2F82C70037C728 /* TMPreferencesWindow.xib */; };
 		569A364A1B2C624300FDF9D7 /* TMAboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A36491B2C624300FDF9D7 /* TMAboutWindow.swift */; };
 		569A364E1B2CCB1200FDF9D7 /* TMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A364D1B2CCB1200FDF9D7 /* TMTextField.swift */; };
 		56D7146F1B2E3BDF00201C73 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 56D7146E1B2E3BDF00201C73 /* Credits.rtf */; };
@@ -60,8 +60,6 @@
 		560855E51B28EE9D0081487C /* DDHotKeyUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyUtilities.m; path = ../../../../GitHub/DDHotKey/DDHotKeyUtilities.m; sourceTree = "<group>"; };
 		560855E91B28F2A00081487C /* KeyMaskHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyMaskHelper.h; sourceTree = "<group>"; };
 		560855EA1B28F2A00081487C /* KeyMaskHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyMaskHelper.m; sourceTree = "<group>"; };
-		565427031B2B62B800A721BD /* TMPreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TMPreferencesWindowController.swift; path = ../TMPreferencesWindowController.swift; sourceTree = "<group>"; };
-		565427041B2B62B800A721BD /* TMPreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TMPreferencesWindow.xib; path = ../TMPreferencesWindow.xib; sourceTree = "<group>"; };
 		565427071B2B62EC00A721BD /* TMAboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMAboutWindowController.swift; sourceTree = "<group>"; };
 		565427081B2B62EC00A721BD /* TMAboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMAboutWindow.xib; sourceTree = "<group>"; };
 		5654270B1B2B77AC00A721BD /* TMTweetWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTweetWindowController.swift; sourceTree = "<group>"; };
@@ -78,6 +76,8 @@
 		565F0C761B279DC2001A86A8 /* TwitterText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterText.m; sourceTree = "<group>"; };
 		565F0C781B279DF4001A86A8 /* TwitterTextEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterTextEntity.h; sourceTree = "<group>"; };
 		565F0C791B279DF4001A86A8 /* TwitterTextEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterTextEntity.m; sourceTree = "<group>"; };
+		5685198E1B2F82BF0037C728 /* TMPreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPreferencesWindowController.swift; sourceTree = "<group>"; };
+		568519901B2F82C70037C728 /* TMPreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMPreferencesWindow.xib; sourceTree = "<group>"; };
 		569A36491B2C624300FDF9D7 /* TMAboutWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMAboutWindow.swift; sourceTree = "<group>"; };
 		569A364D1B2CCB1200FDF9D7 /* TMTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTextField.swift; sourceTree = "<group>"; };
 		56A8C3771B2A3DD000699998 /* TwitMin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TwitMin.entitlements; sourceTree = "<group>"; };
@@ -141,8 +141,8 @@
 				5654270B1B2B77AC00A721BD /* TMTweetWindowController.swift */,
 				5654270C1B2B77AC00A721BD /* TMTweetWindow.xib */,
 				5654270F1B2B814100A721BD /* TMTweetWindow.swift */,
-				565427031B2B62B800A721BD /* TMPreferencesWindowController.swift */,
-				565427041B2B62B800A721BD /* TMPreferencesWindow.xib */,
+				5685198E1B2F82BF0037C728 /* TMPreferencesWindowController.swift */,
+				568519901B2F82C70037C728 /* TMPreferencesWindow.xib */,
 				565427071B2B62EC00A721BD /* TMAboutWindowController.swift */,
 				565427081B2B62EC00A721BD /* TMAboutWindow.xib */,
 				569A36491B2C624300FDF9D7 /* TMAboutWindow.swift */,
@@ -230,11 +230,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5654270A1B2B62EC00A721BD /* TMAboutWindow.xib in Resources */,
+				568519911B2F82C70037C728 /* TMPreferencesWindow.xib in Resources */,
 				56D7146F1B2E3BDF00201C73 /* Credits.rtf in Resources */,
 				565F0C3A1B2773E8001A86A8 /* Assets.xcassets in Resources */,
 				5654270E1B2B77AC00A721BD /* TMTweetWindow.xib in Resources */,
 				565F0C3D1B2773E8001A86A8 /* MainMenu.xib in Resources */,
-				565427061B2B62B800A721BD /* TMPreferencesWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,11 +250,11 @@
 				569A364A1B2C624300FDF9D7 /* TMAboutWindow.swift in Sources */,
 				565F0C381B2773E8001A86A8 /* AppDelegate.swift in Sources */,
 				560855E81B28EE9D0081487C /* DDHotKeyUtilities.m in Sources */,
+				5685198F1B2F82BF0037C728 /* TMPreferencesWindowController.swift in Sources */,
 				565F0C771B279DC2001A86A8 /* TwitterText.m in Sources */,
 				565427091B2B62EC00A721BD /* TMAboutWindowController.swift in Sources */,
 				560855E71B28EE9D0081487C /* DDHotKeyTextField.m in Sources */,
 				565427101B2B814100A721BD /* TMTweetWindow.swift in Sources */,
-				565427051B2B62B800A721BD /* TMPreferencesWindowController.swift in Sources */,
 				5654270D1B2B77AC00A721BD /* TMTweetWindowController.swift in Sources */,
 				569A364E1B2CCB1200FDF9D7 /* TMTextField.swift in Sources */,
 				565F0C7A1B279DF4001A86A8 /* TwitterTextEntity.m in Sources */,
