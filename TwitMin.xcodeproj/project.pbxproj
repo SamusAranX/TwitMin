@@ -24,6 +24,7 @@
 		565F0C7A1B279DF4001A86A8 /* TwitterTextEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 565F0C791B279DF4001A86A8 /* TwitterTextEntity.m */; };
 		5685198F1B2F82BF0037C728 /* TMPreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685198E1B2F82BF0037C728 /* TMPreferencesWindowController.swift */; };
 		568519911B2F82C70037C728 /* TMPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 568519901B2F82C70037C728 /* TMPreferencesWindow.xib */; };
+		568519931B2F82F70037C728 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 568519921B2F82F70037C728 /* README.md */; };
 		569A364A1B2C624300FDF9D7 /* TMAboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A36491B2C624300FDF9D7 /* TMAboutWindow.swift */; };
 		569A364E1B2CCB1200FDF9D7 /* TMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A364D1B2CCB1200FDF9D7 /* TMTextField.swift */; };
 		56D7146F1B2E3BDF00201C73 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 56D7146E1B2E3BDF00201C73 /* Credits.rtf */; };
@@ -78,6 +79,7 @@
 		565F0C791B279DF4001A86A8 /* TwitterTextEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterTextEntity.m; sourceTree = "<group>"; };
 		5685198E1B2F82BF0037C728 /* TMPreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPreferencesWindowController.swift; sourceTree = "<group>"; };
 		568519901B2F82C70037C728 /* TMPreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMPreferencesWindow.xib; sourceTree = "<group>"; };
+		568519921B2F82F70037C728 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		569A36491B2C624300FDF9D7 /* TMAboutWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMAboutWindow.swift; sourceTree = "<group>"; };
 		569A364D1B2CCB1200FDF9D7 /* TMTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTextField.swift; sourceTree = "<group>"; };
 		56A8C3771B2A3DD000699998 /* TwitMin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TwitMin.entitlements; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				569A36491B2C624300FDF9D7 /* TMAboutWindow.swift */,
 				569A364D1B2CCB1200FDF9D7 /* TMTextField.swift */,
 				56D7146E1B2E3BDF00201C73 /* Credits.rtf */,
+				568519921B2F82F70037C728 /* README.md */,
 				565F0C3E1B2773E8001A86A8 /* Info.plist */,
 			);
 			path = TwitMin;
@@ -255,6 +258,7 @@
 				565427091B2B62EC00A721BD /* TMAboutWindowController.swift in Sources */,
 				560855E71B28EE9D0081487C /* DDHotKeyTextField.m in Sources */,
 				565427101B2B814100A721BD /* TMTweetWindow.swift in Sources */,
+				568519931B2F82F70037C728 /* README.md in Sources */,
 				5654270D1B2B77AC00A721BD /* TMTweetWindowController.swift in Sources */,
 				569A364E1B2CCB1200FDF9D7 /* TMTextField.swift in Sources */,
 				565F0C7A1B279DF4001A86A8 /* TwitterTextEntity.m in Sources */,
