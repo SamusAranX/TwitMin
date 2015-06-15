@@ -24,7 +24,9 @@
 		565F0C451B2774C0001A86A8 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 565F0C441B2774C0001A86A8 /* Social.framework */; };
 		565F0C771B279DC2001A86A8 /* TwitterText.m in Sources */ = {isa = PBXBuildFile; fileRef = 565F0C761B279DC2001A86A8 /* TwitterText.m */; };
 		565F0C7A1B279DF4001A86A8 /* TwitterTextEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 565F0C791B279DF4001A86A8 /* TwitterTextEntity.m */; };
-		56A8C37C1B2A420200699998 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 56A8C37B1B2A420200699998 /* Credits.rtf */; };
+		569A364A1B2C624300FDF9D7 /* TMAboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A36491B2C624300FDF9D7 /* TMAboutWindow.swift */; };
+		569A364E1B2CCB1200FDF9D7 /* TMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A364D1B2CCB1200FDF9D7 /* TMTextField.swift */; };
+		56D7146F1B2E3BDF00201C73 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 56D7146E1B2E3BDF00201C73 /* Credits.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,6 +38,15 @@
 			files = (
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56ACDC061B2F70DA0008BDAB /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -67,8 +78,10 @@
 		565F0C761B279DC2001A86A8 /* TwitterText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterText.m; sourceTree = "<group>"; };
 		565F0C781B279DF4001A86A8 /* TwitterTextEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterTextEntity.h; sourceTree = "<group>"; };
 		565F0C791B279DF4001A86A8 /* TwitterTextEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterTextEntity.m; sourceTree = "<group>"; };
+		569A36491B2C624300FDF9D7 /* TMAboutWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMAboutWindow.swift; sourceTree = "<group>"; };
+		569A364D1B2CCB1200FDF9D7 /* TMTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTextField.swift; sourceTree = "<group>"; };
 		56A8C3771B2A3DD000699998 /* TwitMin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TwitMin.entitlements; sourceTree = "<group>"; };
-		56A8C37B1B2A420200699998 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		56D7146E1B2E3BDF00201C73 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,8 +145,10 @@
 				565427041B2B62B800A721BD /* TMPreferencesWindow.xib */,
 				565427071B2B62EC00A721BD /* TMAboutWindowController.swift */,
 				565427081B2B62EC00A721BD /* TMAboutWindow.xib */,
+				569A36491B2C624300FDF9D7 /* TMAboutWindow.swift */,
+				569A364D1B2CCB1200FDF9D7 /* TMTextField.swift */,
+				56D7146E1B2E3BDF00201C73 /* Credits.rtf */,
 				565F0C3E1B2773E8001A86A8 /* Info.plist */,
-				56A8C37B1B2A420200699998 /* Credits.rtf */,
 			);
 			path = TwitMin;
 			sourceTree = "<group>";
@@ -160,6 +175,7 @@
 				565F0C311B2773E8001A86A8 /* Frameworks */,
 				565F0C321B2773E8001A86A8 /* Resources */,
 				565F0C601B2781D2001A86A8 /* Embed Frameworks */,
+				56ACDC061B2F70DA0008BDAB /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -214,8 +230,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5654270A1B2B62EC00A721BD /* TMAboutWindow.xib in Resources */,
+				56D7146F1B2E3BDF00201C73 /* Credits.rtf in Resources */,
 				565F0C3A1B2773E8001A86A8 /* Assets.xcassets in Resources */,
-				56A8C37C1B2A420200699998 /* Credits.rtf in Resources */,
 				5654270E1B2B77AC00A721BD /* TMTweetWindow.xib in Resources */,
 				565F0C3D1B2773E8001A86A8 /* MainMenu.xib in Resources */,
 				565427061B2B62B800A721BD /* TMPreferencesWindow.xib in Resources */,
@@ -231,6 +247,7 @@
 			files = (
 				560855EB1B28F2A00081487C /* KeyMaskHelper.m in Sources */,
 				560855E61B28EE9D0081487C /* DDHotKeyCenter.m in Sources */,
+				569A364A1B2C624300FDF9D7 /* TMAboutWindow.swift in Sources */,
 				565F0C381B2773E8001A86A8 /* AppDelegate.swift in Sources */,
 				560855E81B28EE9D0081487C /* DDHotKeyUtilities.m in Sources */,
 				565F0C771B279DC2001A86A8 /* TwitterText.m in Sources */,
@@ -239,6 +256,7 @@
 				565427101B2B814100A721BD /* TMTweetWindow.swift in Sources */,
 				565427051B2B62B800A721BD /* TMPreferencesWindowController.swift in Sources */,
 				5654270D1B2B77AC00A721BD /* TMTweetWindowController.swift in Sources */,
+				569A364E1B2CCB1200FDF9D7 /* TMTextField.swift in Sources */,
 				565F0C7A1B279DF4001A86A8 /* TwitterTextEntity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,6 +365,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = TwitMin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.peterwunder.TwitMin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TwitMin/TwitMin-Bridging-Header.h";
@@ -364,6 +383,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = TwitMin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.peterwunder.TwitMin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TwitMin/TwitMin-Bridging-Header.h";

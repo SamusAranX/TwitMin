@@ -10,7 +10,7 @@ import Cocoa
 import Accounts
 import Social
 
-class TMTweetWindow: NSWindow, NSTextViewDelegate {
+class TMTweetWindow: NSWindow, NSTextViewDelegate, NSTextStorageDelegate {
 
 	@IBOutlet var vfxView: NSVisualEffectView!
 	
@@ -85,6 +85,8 @@ class TMTweetWindow: NSWindow, NSTextViewDelegate {
 		
 		self.tmTextView.textContainerInset = NSSize(width: 10, height: 10)
 		self.tmTextView.textColor = NSColor.labelColor()
+		self.tmTextView.textStorage?.delegate = self
+		
 		self.tmAccountPopUp.removeAllItems() // Remove Xcode's example items (Item 1, Item 2, etc.) from the popup button
 		
 		acStore = ACAccountStore()
@@ -189,6 +191,21 @@ class TMTweetWindow: NSWindow, NSTextViewDelegate {
 			self.tmTweetButton.enabled = remainingChars < 140 && remainingChars >= 0
 		} else {
 			println("Tweet text is nil")
+		}
+	}
+	
+	override func textStorageDidProcessEditing(notification: NSNotification) {
+		let textStorage: NSTextStorage = notification.object as! NSTextStorage
+		let wholeRange = NSMakeRange(0, textStorage.length)
+		textStorage.removeAttribute(NSForegroundColorAttributeName, range: wholeRange)
+		textStorage.addAttribute(NSForegroundColorAttributeName, value: NSColor.labelColor(), range: wholeRange)
+		
+		let entities = TwitterText.entitiesInText(textStorage.string) as! [TwitterTextEntity]
+		println(entities)
+		for e in entities {
+			// Slightly darker blue on light background, slightly brighter blue on dark background
+			let entityColor = self.appearance == NSAppearanceNameVibrantDark ? NSColor(red:0.08, green:0.49, blue:0.98, alpha:1) : NSColor(calibratedRed:0.51, green:0.75, blue:0.99, alpha:1)
+			textStorage.addAttribute(NSForegroundColorAttributeName, value: entityColor, range: e.range)
 		}
 	}
 	

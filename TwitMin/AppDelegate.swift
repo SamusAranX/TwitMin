@@ -61,12 +61,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		if tweetWindowController.window != nil && tweetWindowController.window!.visible {
 			tweetWindowController.window?.appearance = systemAppearance
 		}
-		if preferencesWindowController.window != nil && preferencesWindowController.window!.visible {
-			preferencesWindowController.window?.appearance = systemAppearance
-		}
-		if aboutWindowController.window != nil && aboutWindowController.window!.visible {
-			aboutWindowController.window?.appearance = systemAppearance
-		}
+		
+		// On second thought, let's not do this
+//		if preferencesWindowController.window != nil && preferencesWindowController.window!.visible {
+//			preferencesWindowController.window?.appearance = systemAppearance
+//		}
+//		if aboutWindowController.window != nil && aboutWindowController.window!.visible {
+//			aboutWindowController.window?.appearance = systemAppearance
+//		}
 	}
 
 	// IBAction that gets called from the menu bar item

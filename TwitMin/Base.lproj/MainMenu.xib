@@ -26,7 +26,7 @@
                             <menuItem title="About TwitMin" id="5kV-Vb-QxS">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="showAboutWindow:" target="Voe-Tx-rLC" id="fK0-YK-xTr"/>
+                                    <action selector="orderFrontStandardAboutPanel:" target="-1" id="xQO-ww-i4D"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
@@ -622,7 +622,7 @@ DQ
                 <menuItem title="About TwitMin" id="8Rk-OE-Wez">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="showAboutWindow:" target="Voe-Tx-rLC" id="ICU-Q9-gM7"/>
+                        <action selector="orderFrontStandardAboutPanel:" target="-1" id="fos-2J-bin"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="EjV-vC-OZn"/>

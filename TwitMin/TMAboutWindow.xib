@@ -11,21 +11,70 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="About TwitMin" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
+        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5" customClass="TMAboutWindow" customModule="TwitMin" customModuleProvider="target">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="320" height="400"/>
+            <rect key="contentRect" x="196" y="240" width="300" height="300"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
-            <value key="minSize" type="size" width="320" height="400"/>
-            <value key="maxSize" type="size" width="320" height="400"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
+                <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eOx-Kz-mI8">
+                        <rect key="frame" x="118" y="228" width="64" height="64"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="64" id="7cu-Og-B0B"/>
+                            <constraint firstAttribute="width" constant="64" id="JvP-oV-XFL"/>
+                        </constraints>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSComputer" id="mus-BI-8u3"/>
+                    </imageView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bid-TJ-W31">
+                        <rect key="frame" x="118" y="201" width="65" height="19"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="TwitMin" id="fp0-L4-UTN">
+                            <font key="font" metaFont="systemBold" size="16"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dys-I2-4nd">
+                        <rect key="frame" x="111" y="179" width="79" height="14"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version 1.0 (1)" id="PgQ-Ng-U9Z">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EqZ-sT-l0o">
+                        <rect key="frame" x="6" y="154" width="288" height="17"/>
+                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" alignment="center" title="Multiline Label" allowsEditingTextAttributes="YES" id="Vp5-Sk-KSs">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="EqZ-sT-l0o" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="8" id="0IG-4E-xZe"/>
+                    <constraint firstItem="dys-I2-4nd" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="14a-DW-hcs"/>
+                    <constraint firstItem="eOx-Kz-mI8" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="6Gm-Dx-yaA"/>
+                    <constraint firstItem="dys-I2-4nd" firstAttribute="top" secondItem="Bid-TJ-W31" secondAttribute="bottom" constant="8" id="7PS-dS-wjp"/>
+                    <constraint firstItem="eOx-Kz-mI8" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="8" id="DX5-bQ-gIn"/>
+                    <constraint firstItem="EqZ-sT-l0o" firstAttribute="top" secondItem="dys-I2-4nd" secondAttribute="bottom" constant="8" id="JIK-xc-S4e"/>
+                    <constraint firstAttribute="trailing" secondItem="EqZ-sT-l0o" secondAttribute="trailing" constant="8" id="Yxk-zM-Svn"/>
+                    <constraint firstItem="Bid-TJ-W31" firstAttribute="top" secondItem="eOx-Kz-mI8" secondAttribute="bottom" constant="8" id="bjj-ds-nAE"/>
+                    <constraint firstItem="Bid-TJ-W31" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="dXm-6U-0TQ"/>
+                    <constraint firstItem="EqZ-sT-l0o" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="uNt-FE-LuR"/>
+                </constraints>
             </view>
             <connections>
+                <outlet property="aboutTextLabel" destination="EqZ-sT-l0o" id="4cS-qZ-vI7"/>
+                <outlet property="aboutVersionLabel" destination="dys-I2-4nd" id="iYK-Sg-iBZ"/>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="376" y="541"/>
+            <point key="canvasLocation" x="332" y="609.5"/>
         </window>
     </objects>
+    <resources>
+        <image name="NSComputer" width="32" height="32"/>
+    </resources>
 </document>
