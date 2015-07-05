@@ -10,12 +10,12 @@
 		560855E61B28EE9D0081487C /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 560855E11B28EE9D0081487C /* DDHotKeyCenter.m */; };
 		560855E71B28EE9D0081487C /* DDHotKeyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 560855E31B28EE9D0081487C /* DDHotKeyTextField.m */; };
 		560855E81B28EE9D0081487C /* DDHotKeyUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 560855E51B28EE9D0081487C /* DDHotKeyUtilities.m */; };
-		560855EB1B28F2A00081487C /* KeyMaskHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 560855EA1B28F2A00081487C /* KeyMaskHelper.m */; };
 		565427091B2B62EC00A721BD /* TMAboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565427071B2B62EC00A721BD /* TMAboutWindowController.swift */; };
 		5654270A1B2B62EC00A721BD /* TMAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 565427081B2B62EC00A721BD /* TMAboutWindow.xib */; };
 		5654270D1B2B77AC00A721BD /* TMTweetWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5654270B1B2B77AC00A721BD /* TMTweetWindowController.swift */; };
 		5654270E1B2B77AC00A721BD /* TMTweetWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5654270C1B2B77AC00A721BD /* TMTweetWindow.xib */; };
 		565427101B2B814100A721BD /* TMTweetWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5654270F1B2B814100A721BD /* TMTweetWindow.swift */; };
+		565690761B3A0F5D00B05E3C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 565690751B3A0F5D00B05E3C /* CoreLocation.framework */; };
 		565F0C381B2773E8001A86A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565F0C371B2773E8001A86A8 /* AppDelegate.swift */; };
 		565F0C3A1B2773E8001A86A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 565F0C391B2773E8001A86A8 /* Assets.xcassets */; };
 		565F0C3D1B2773E8001A86A8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 565F0C3B1B2773E8001A86A8 /* MainMenu.xib */; };
@@ -26,7 +26,6 @@
 		568519911B2F82C70037C728 /* TMPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 568519901B2F82C70037C728 /* TMPreferencesWindow.xib */; };
 		568519931B2F82F70037C728 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 568519921B2F82F70037C728 /* README.md */; };
 		569A364A1B2C624300FDF9D7 /* TMAboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A36491B2C624300FDF9D7 /* TMAboutWindow.swift */; };
-		569A364E1B2CCB1200FDF9D7 /* TMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A364D1B2CCB1200FDF9D7 /* TMTextField.swift */; };
 		56D7146F1B2E3BDF00201C73 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 56D7146E1B2E3BDF00201C73 /* Credits.rtf */; };
 /* End PBXBuildFile section */
 
@@ -59,13 +58,12 @@
 		560855E31B28EE9D0081487C /* DDHotKeyTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyTextField.m; path = ../../../../GitHub/DDHotKey/DDHotKeyTextField.m; sourceTree = "<group>"; };
 		560855E41B28EE9D0081487C /* DDHotKeyUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDHotKeyUtilities.h; path = ../../../../GitHub/DDHotKey/DDHotKeyUtilities.h; sourceTree = "<group>"; };
 		560855E51B28EE9D0081487C /* DDHotKeyUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyUtilities.m; path = ../../../../GitHub/DDHotKey/DDHotKeyUtilities.m; sourceTree = "<group>"; };
-		560855E91B28F2A00081487C /* KeyMaskHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyMaskHelper.h; sourceTree = "<group>"; };
-		560855EA1B28F2A00081487C /* KeyMaskHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyMaskHelper.m; sourceTree = "<group>"; };
 		565427071B2B62EC00A721BD /* TMAboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMAboutWindowController.swift; sourceTree = "<group>"; };
 		565427081B2B62EC00A721BD /* TMAboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMAboutWindow.xib; sourceTree = "<group>"; };
 		5654270B1B2B77AC00A721BD /* TMTweetWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTweetWindowController.swift; sourceTree = "<group>"; };
 		5654270C1B2B77AC00A721BD /* TMTweetWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMTweetWindow.xib; sourceTree = "<group>"; };
 		5654270F1B2B814100A721BD /* TMTweetWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTweetWindow.swift; sourceTree = "<group>"; };
+		565690751B3A0F5D00B05E3C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		565F0C341B2773E8001A86A8 /* TwitMin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitMin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		565F0C371B2773E8001A86A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		565F0C391B2773E8001A86A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,7 +79,6 @@
 		568519901B2F82C70037C728 /* TMPreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMPreferencesWindow.xib; sourceTree = "<group>"; };
 		568519921B2F82F70037C728 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		569A36491B2C624300FDF9D7 /* TMAboutWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMAboutWindow.swift; sourceTree = "<group>"; };
-		569A364D1B2CCB1200FDF9D7 /* TMTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTextField.swift; sourceTree = "<group>"; };
 		56A8C3771B2A3DD000699998 /* TwitMin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TwitMin.entitlements; sourceTree = "<group>"; };
 		56D7146E1B2E3BDF00201C73 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				565690761B3A0F5D00B05E3C /* CoreLocation.framework in Frameworks */,
 				565F0C451B2774C0001A86A8 /* Social.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -107,8 +105,6 @@
 				560855E31B28EE9D0081487C /* DDHotKeyTextField.m */,
 				560855E41B28EE9D0081487C /* DDHotKeyUtilities.h */,
 				560855E51B28EE9D0081487C /* DDHotKeyUtilities.m */,
-				560855E91B28F2A00081487C /* KeyMaskHelper.h */,
-				560855EA1B28F2A00081487C /* KeyMaskHelper.m */,
 			);
 			name = DDHotKey;
 			sourceTree = "<group>";
@@ -116,6 +112,7 @@
 		565F0C2B1B2773E8001A86A8 = {
 			isa = PBXGroup;
 			children = (
+				565690751B3A0F5D00B05E3C /* CoreLocation.framework */,
 				565F0C441B2774C0001A86A8 /* Social.framework */,
 				565F0C361B2773E8001A86A8 /* TwitMin */,
 				565F0C351B2773E8001A86A8 /* Products */,
@@ -148,7 +145,6 @@
 				565427071B2B62EC00A721BD /* TMAboutWindowController.swift */,
 				565427081B2B62EC00A721BD /* TMAboutWindow.xib */,
 				569A36491B2C624300FDF9D7 /* TMAboutWindow.swift */,
-				569A364D1B2CCB1200FDF9D7 /* TMTextField.swift */,
 				56D7146E1B2E3BDF00201C73 /* Credits.rtf */,
 				568519921B2F82F70037C728 /* README.md */,
 				565F0C3E1B2773E8001A86A8 /* Info.plist */,
@@ -248,7 +244,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				560855EB1B28F2A00081487C /* KeyMaskHelper.m in Sources */,
 				560855E61B28EE9D0081487C /* DDHotKeyCenter.m in Sources */,
 				569A364A1B2C624300FDF9D7 /* TMAboutWindow.swift in Sources */,
 				565F0C381B2773E8001A86A8 /* AppDelegate.swift in Sources */,
@@ -260,7 +255,6 @@
 				565427101B2B814100A721BD /* TMTweetWindow.swift in Sources */,
 				568519931B2F82F70037C728 /* README.md in Sources */,
 				5654270D1B2B77AC00A721BD /* TMTweetWindowController.swift in Sources */,
-				569A364E1B2CCB1200FDF9D7 /* TMTextField.swift in Sources */,
 				565F0C7A1B279DF4001A86A8 /* TwitterTextEntity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

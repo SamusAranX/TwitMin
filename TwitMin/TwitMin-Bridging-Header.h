@@ -8,5 +8,3 @@
 #import "DDHotKeyCenter.h"
 #import "DDHotKeyTextField.h"
 #import "DDHotKeyUtilities.h"
-
-#import "KeyMaskHelper.h"

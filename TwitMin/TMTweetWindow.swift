@@ -6,6 +6,8 @@
 //  Copyright © 2015 Peter Wunder. All rights reserved.
 //
 
+// TODO: https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/index.html#//apple_ref/occ/cl/CLLocationManager
+
 import Cocoa
 import Accounts
 import Social

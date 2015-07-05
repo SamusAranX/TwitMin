@@ -43,8 +43,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		aboutWindowController = TMAboutWindowController(windowNibName: "TMAboutWindow")
 		
 		hotKeyCenter = DDHotKeyCenter.sharedHotKeyCenter()
-		// I'm using the KeyMaskHelper class below because Xcode is stupid and won't let me use things like NSCommandKeyMask directly
-		composeHotKey = DDHotKey(keyCode: UInt16(kVK_Return), modifierFlags: KeyMaskHelper.cmdMask() | KeyMaskHelper.shiftMask(), task: {
+		let hotKeyOptionSet: NSEventModifierFlags = [.CommandKeyMask, .ShiftKeyMask]
+		composeHotKey = DDHotKey(keyCode: UInt16(kVK_Return), modFlags: hotKeyOptionSet, task: {
 			event in
 			
 			self.actuallyShowTweetWindow()

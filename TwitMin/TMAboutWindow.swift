@@ -61,8 +61,4 @@ class TMAboutWindow: NSWindow {
 //		aboutTextLabel.mouseUp(eventUp!)
 		
 	}
-	
-	@IBAction func linkClicked(sender: TMTextField) {
-		println("click")
-	}
 }
