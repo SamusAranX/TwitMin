@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8121.17" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8152.3" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8121.17"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8152.3"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TMTweetWindowController" customModule="TwitMin" customModuleProvider="target">
@@ -66,7 +66,7 @@
                                         </constraints>
                                         <popUpButtonCell key="cell" type="push" title="Twitter Accounts" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="i39-kn-YzR" id="vJs-Fr-Rpy">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="menu"/>
+                                            <font key="font" metaFont="system"/>
                                             <menu key="menu" id="CwA-Bf-KRs">
                                                 <items>
                                                     <menuItem title="Twitter Accounts" state="on" id="i39-kn-YzR"/>
@@ -76,22 +76,8 @@
                                             </menu>
                                         </popUpButtonCell>
                                     </popUpButton>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="btz-0d-wwW">
-                                        <rect key="frame" x="302" y="1" width="76" height="32"/>
-                                        <buttonCell key="cell" type="push" title="Tweet" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8SM-XF-hGz">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                            <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                                            <modifierMask key="keyEquivalentModifierMask" command="YES"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="tweetButtonPressed:" target="F0z-JX-Cv5" id="0HX-zg-b0U"/>
-                                        </connections>
-                                    </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DDa-YI-E3o">
-                                        <rect key="frame" x="256" y="9" width="44" height="19"/>
+                                        <rect key="frame" x="328" y="9" width="44" height="19"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="140" bezelStyle="round" id="ctz-FO-uct">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -101,10 +87,8 @@ DQ
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="oxx-Um-lEC" firstAttribute="leading" secondItem="lSg-tu-yL6" secondAttribute="leading" constant="8" id="J8z-JZ-KUQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="btz-0d-wwW" secondAttribute="trailing" constant="8" id="KzG-A6-1M9"/>
-                                    <constraint firstItem="btz-0d-wwW" firstAttribute="leading" secondItem="DDa-YI-E3o" secondAttribute="trailing" constant="8" id="dis-JY-jdU"/>
-                                    <constraint firstItem="btz-0d-wwW" firstAttribute="centerY" secondItem="lSg-tu-yL6" secondAttribute="centerY" id="smx-13-6Ux"/>
-                                    <constraint firstItem="DDa-YI-E3o" firstAttribute="centerY" secondItem="lSg-tu-yL6" secondAttribute="centerY" id="uJ4-14-Oul"/>
+                                    <constraint firstAttribute="trailing" secondItem="DDa-YI-E3o" secondAttribute="trailing" constant="8" id="a2Q-9D-mZB"/>
+                                    <constraint firstItem="DDa-YI-E3o" firstAttribute="centerY" secondItem="lSg-tu-yL6" secondAttribute="centerY" id="qVY-iW-XWI"/>
                                     <constraint firstItem="oxx-Um-lEC" firstAttribute="centerY" secondItem="lSg-tu-yL6" secondAttribute="centerY" id="vwX-lK-PLf"/>
                                 </constraints>
                             </customView>
@@ -146,11 +130,33 @@ DQ
                             </textFieldCell>
                         </textField>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="1DD7B129-FADB-40F1-9768-CE760676A8CC" label="Tweet Button" paletteLabel="Tweet Button" id="tLY-Xp-bCG">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="56" height="32"/>
+                        <size key="maxSize" width="66" height="43"/>
+                        <button key="view" verticalHuggingPriority="750" id="wlG-Rr-rGp">
+                            <rect key="frame" x="6" y="14" width="66" height="38"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="push" title="Tweet" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PbG-gX-Dgt">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="smallSystem"/>
+                                <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="tweetButtonPressed:" target="F0z-JX-Cv5" id="uBp-Fv-uzZ"/>
+                            </connections>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="E5CB0FA8-6343-4CE6-92EA-1CBA95CA9785" label="Adaptive Space" paletteLabel="Adaptive Space" tag="-1" id="etw-M0-e2B" customClass="TAAdaptiveSpaceItem"/>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
-                    <toolbarItem reference="RcT-Vy-r4g"/>
+                    <toolbarItem reference="etw-M0-e2B"/>
                     <toolbarItem reference="cAq-VE-Zhc"/>
                     <toolbarItem reference="RcT-Vy-r4g"/>
+                    <toolbarItem reference="tLY-Xp-bCG"/>
                 </defaultToolbarItems>
             </toolbar>
             <connections>
@@ -158,9 +164,10 @@ DQ
                 <outlet property="tmAccountPopUp" destination="oxx-Um-lEC" id="ceE-s5-ib4"/>
                 <outlet property="tmTextLengthLabel" destination="DDa-YI-E3o" id="zw3-C9-lxK"/>
                 <outlet property="tmTextView" destination="iOJ-aI-OHs" id="b9q-ub-jbl"/>
-                <outlet property="tmTweetButton" destination="btz-0d-wwW" id="iWn-N1-8X5"/>
+                <outlet property="tmTweetButton" destination="wlG-Rr-rGp" id="6mE-yl-QqO"/>
                 <outlet property="vfxView" destination="tQM-21-ZhF" id="MWX-xP-KE8"/>
             </connections>
+            <point key="canvasLocation" x="408" y="406"/>
         </window>
     </objects>
 </document>

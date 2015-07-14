@@ -54,7 +54,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 	
 	func systemThemeChanged(notification: NSNotification) {
-		// If the user changed their system's color scheme, we're gonna know
+		// If the user changes their system's color scheme, we'll know
 		let systemAppearanceName = (NSUserDefaults.standardUserDefaults().stringForKey("AppleInterfaceStyle") ?? "Light").lowercaseString
 		let systemAppearance = systemAppearanceName == "dark" ? NSAppearance(named: NSAppearanceNameVibrantDark) : NSAppearance(named: NSAppearanceNameVibrantLight)
 		

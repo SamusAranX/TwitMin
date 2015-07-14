@@ -203,7 +203,7 @@ class TMTweetWindow: NSWindow, NSTextViewDelegate, NSTextStorageDelegate {
 		textStorage.addAttribute(NSForegroundColorAttributeName, value: NSColor.labelColor(), range: wholeRange)
 		
 		let entities = TwitterText.entitiesInText(textStorage.string) as! [TwitterTextEntity]
-		println(entities)
+//		println(entities)
 		for e in entities {
 			// Slightly darker blue on light background, slightly brighter blue on dark background
 			let entityColor = self.appearance == NSAppearanceNameVibrantDark ? NSColor(red:0.08, green:0.49, blue:0.98, alpha:1) : NSColor(calibratedRed:0.51, green:0.75, blue:0.99, alpha:1)
