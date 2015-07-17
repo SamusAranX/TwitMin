@@ -15,7 +15,6 @@ class TMTweetWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
 
-		println("Initializing Tweet Window")
 		self.tweetWindow.initialize()
 		
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
@@ -25,8 +24,6 @@ class TMTweetWindowController: NSWindowController {
 		self.tweetWindow.windowWillShow()
 		
 		super.showWindow(sender)
-		
-		println("Showing Tweet Window")
 	}
     
 }

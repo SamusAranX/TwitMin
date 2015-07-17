@@ -6,11 +6,11 @@
 //  Copyright © 2015 Peter Wunder. All rights reserved.
 //
 
-// TODO: https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/index.html#//apple_ref/occ/cl/CLLocationManager
 
 import Cocoa
 import Accounts
 import Social
+import CoreLocation
 
 class TMTweetWindow: NSWindow, NSTextViewDelegate, NSTextStorageDelegate {
 
@@ -20,6 +20,9 @@ class TMTweetWindow: NSWindow, NSTextViewDelegate, NSTextStorageDelegate {
 	@IBOutlet var tmAccountPopUp: NSPopUpButton!
 	@IBOutlet var tmTextLengthLabel: NSTextField!
 	@IBOutlet var tmTweetButton: NSButton!
+	
+	var appDelegate: AppDelegate!
+	var geoCoder: CLGeocoder!
 	
 	let twitterText = TwitterText()
 	var acStore: ACAccountStore!
@@ -85,6 +88,9 @@ class TMTweetWindow: NSWindow, NSTextViewDelegate, NSTextStorageDelegate {
 	func initialize() {
 		self.titleVisibility = NSWindowTitleVisibility.Hidden
 		
+		self.appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+		self.geoCoder = CLGeocoder()
+		
 		self.tmTextView.textContainerInset = NSSize(width: 10, height: 10)
 		self.tmTextView.textColor = NSColor.labelColor()
 		self.tmTextView.textStorage?.delegate = self
@@ -98,11 +104,11 @@ class TMTweetWindow: NSWindow, NSTextViewDelegate, NSTextStorageDelegate {
 			(granted, error) in
 			
 			if granted { // We may access their Twitter accounts
-				println("Permission granted")
+				println("Permission to access Twitter accounts granted")
 				if (self.acStore.accounts != nil) && self.acStore.accounts?.count > 0 { // Are there even any Twitter accounts?
-					println("Listing Twitter accounts")
 					let twitterAccounts = self.acStore.accountsWithAccountType(accType) as! [ACAccount] // Get a list of ACAccounts
 					for t in twitterAccounts {
+						
 						self.accountDict[t.username] = t // Add those ACAccounts to a dictionary
 					}
 					println(self.accountDict) // Print the dictionary for good measure
@@ -187,7 +193,7 @@ class TMTweetWindow: NSWindow, NSTextViewDelegate, NSTextStorageDelegate {
 			let remainingChars = TwitterText.remainingCharacterCount(trimmedTweetText)
 			self.tmTextLengthLabel.integerValue = remainingChars
 			
-			// Pretty sure that someone more skilled than me could do this with Cocoa Bindings
+			// Pretty sure that someone smarter than me could do this with Cocoa Bindings
 			// I didn't because Cocoa Bindings don't make any damn sense
 			self.tmTextLengthLabel.textColor = remainingChars >= 0 ? NSColor.labelColor() : NSColor(red:1, green:0.14, blue:0, alpha:1)
 			self.tmTweetButton.enabled = remainingChars < 140 && remainingChars >= 0
@@ -209,6 +215,11 @@ class TMTweetWindow: NSWindow, NSTextViewDelegate, NSTextStorageDelegate {
 			let entityColor = self.appearance == NSAppearanceNameVibrantDark ? NSColor(red:0.08, green:0.49, blue:0.98, alpha:1) : NSColor(calibratedRed:0.51, green:0.75, blue:0.99, alpha:1)
 			textStorage.addAttribute(NSForegroundColorAttributeName, value: entityColor, range: e.range)
 		}
+	}
+	
+	@IBAction func locationButtonPressed(sender: NSButton) {
+//		println(self.appDelegate.locationManager.location)
+		println("Use Location: \(sender.state == NSOnState)")
 	}
 	
 	@IBAction func tweetButtonPressed(sender: NSButton) {

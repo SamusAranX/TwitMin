@@ -9,6 +9,7 @@
 import AppKit
 import Cocoa
 import Carbon
+import CoreLocation
 
 /* Silly not-quite-hack to work around a bug in the first beta of Swift 2.0 
 where the print() function sometimes called the print() function for actual printing */
@@ -17,7 +18,7 @@ func println<T>(value: T) {
 }
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, CLLocationManagerDelegate {
 	
 	var tweetWindowController: TMTweetWindowController!
 	var preferencesWindowController: TMPreferencesWindowController!
@@ -28,9 +29,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	var statusBarItem: NSStatusItem!
 	var hotKeyCenter: DDHotKeyCenter!
 	var composeHotKey: DDHotKey!
+	var locationManager: CLLocationManager!
+	
+	var UIColorDict: Dictionary<String, NSColor>!
 
 	func applicationDidFinishLaunching(aNotification: NSNotification) {
 		NSDistributedNotificationCenter.defaultCenter().addObserver(self, selector: "systemThemeChanged:", name: "AppleInterfaceThemeChangedNotification", object: nil)
+		
+		println(NSColor(hexString: "#FF8800"))
+		println(NSColor(hexString: "#FFF"))
+		println(NSColor(hexString: "#F80"))
+		
+		if let path = NSBundle.mainBundle().pathForResource("UIColors", ofType: "plist") {
+			let dict = NSDictionary(contentsOfFile: path) as! Dictionary<String, String>
+			for key in dict.keys {
+				UIColorDict[key] = NSColor(hexString: dict[key]!)
+			}
+		} else {
+			println("Catastrophic failure.")
+		}
 		
 		statusBarItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
 		statusBarItem.menu = statusBarMenu
@@ -49,8 +66,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			
 			self.actuallyShowTweetWindow()
 		})
-		
 		hotKeyCenter.registerHotKey(composeHotKey)
+		
+		locationManager = CLLocationManager()
+		locationManager.delegate = self
+		locationManager.desiredAccuracy = kCLLocationAccuracyBest
+		locationManager.distanceFilter = 100
+		
+		locationManager.startUpdatingLocation()
 	}
 	
 	func systemThemeChanged(notification: NSNotification) {
@@ -61,6 +84,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		if tweetWindowController.window != nil && tweetWindowController.window!.visible {
 			tweetWindowController.window?.appearance = systemAppearance
 		}
+		
+		
 		
 		// On second thought, let's not do this
 //		if preferencesWindowController.window != nil && preferencesWindowController.window!.visible {
@@ -77,8 +102,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 	
 	func actuallyShowTweetWindow() {
-		println("Show Tweet Window!")
-		
 		NSApp.activateIgnoringOtherApps(true)
 		tweetWindowController.showWindow(nil)
 	}
@@ -98,7 +121,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		println("Deregistering hotkeys")
 		hotKeyCenter.unregisterAllHotKeys()
 	}
-
+	
+	/*
+	*	LOCATION MANAGER DELEGATE STUFF
+	*/
+	
+	func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+		println("Authorization changed to \(status.name())")
+	}
+	
+	func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+		println("Location Manager failed with error: \(error)")
+	}
+	
+	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
+		if !locations.isEmpty {
+			println("Location was updated")
+		} else {
+			println("For some reason, the locations array is empty. Welp")
+		}
+	}
 
 }
 
