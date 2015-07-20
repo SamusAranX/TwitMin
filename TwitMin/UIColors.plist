@@ -3,12 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>BrightThemeRed</key>
-	<string>7E0608</string>
+	<string>#7E0608</string>
 	<key>DarkThemeRed</key>
-	<string>97050C</string>
+	<string>#97050C</string>
 	<key>BrightThemeBlue</key>
-	<string>167EFB</string>
+	<string>#167EFB</string>
 	<key>DarkThemeBlue</key>
-	<string>58A9F6</string>
+	<string>#58A9F6</string>
 </dict>
 </plist>

@@ -55,6 +55,14 @@ extension String {
 	}
 }
 
+extension NSRange {
+	func toRange(string: String) -> Range<String.Index> {
+		let startIndex = advance(string.startIndex, location)
+		let endIndex = advance(startIndex, length)
+		return startIndex..<endIndex
+	}
+}
+
 extension NSColor {
 	public convenience init?(hexString: String) {
 		var hex = hexString
@@ -90,3 +98,17 @@ extension NSColor {
 		}
 	}
 }
+
+extension NSImage {
+	func saveAsPngWithPath(path: String) -> Bool {
+		var imageData = self.TIFFRepresentation
+		let imageRep = NSBitmapImageRep(data: imageData!)
+		imageData = imageRep!.representationUsingType(NSBitmapImageFileType.NSPNGFileType, properties: ["": ""])
+		
+		return imageData!.writeToFile(path, atomically: false)
+	}
+}
+
+
+
+

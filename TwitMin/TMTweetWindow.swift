@@ -21,12 +21,15 @@ class TMTweetWindow: NSWindow, NSTextViewDelegate, NSTextStorageDelegate {
 	@IBOutlet var tmTextLengthLabel: NSTextField!
 	@IBOutlet var tmTweetButton: NSButton!
 	
+	@IBOutlet var avatarViewContainer: NSView!
+	@IBOutlet var avatarBackgroundView: NSImageView!
+	@IBOutlet var avatarView: NSImageView!
+	
 	var appDelegate: AppDelegate!
 	var geoCoder: CLGeocoder!
 	
-	let twitterText = TwitterText()
-	var acStore: ACAccountStore!
-	var accountDict = [String:ACAccount]()
+//	var acStore: ACAccountStore!
+//	var accountDict = [String:ACAccount]()
 	
 	// Here's a bunch of HTTP status codes, taken from Twitter's docs: https://dev.twitter.com/overview/api/response-codes
 	let statusCodes = [
@@ -72,105 +75,21 @@ class TMTweetWindow: NSWindow, NSTextViewDelegate, NSTextStorageDelegate {
 		272: "You are not muting the specified user."
 	]
 	
-	// This method creates a ready-made NSAlert for us
-	// This isn't really needed, I just did this to minimize NSAlert-related code below
-	func prepareAlert(title: String, message: String, buttons: [String]) -> NSAlert {
-		let alert = NSAlert()
-		alert.alertStyle = .WarningAlertStyle
-		alert.messageText = title
-		alert.informativeText = message
-		for b in buttons {
-			alert.addButtonWithTitle(b)
-		}
-		return alert
-	}
-	
 	func initialize() {
 		self.titleVisibility = NSWindowTitleVisibility.Hidden
 		
 		self.appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
 		self.geoCoder = CLGeocoder()
 		
-		self.tmTextView.textContainerInset = NSSize(width: 10, height: 10)
-		self.tmTextView.textColor = NSColor.labelColor()
-		self.tmTextView.textStorage?.delegate = self
+		self.tmTextView.textContainerInset = NSSize(width: 4, height: 8)
+//		self.tmTextView.textColor = NSColor.labelColor()
+		self.tmTextView.textStorage!.delegate = self
 		
 		self.tmAccountPopUp.removeAllItems() // Remove Xcode's example items (Item 1, Item 2, etc.) from the popup button
+		self.tmAccountPopUp.addItemsWithTitles(appDelegate.accountDict.keys.array) // Populate the account list
 		
-		acStore = ACAccountStore()
-		let accType = acStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter) // We want only the Twitter accounts
-		
-		acStore.requestAccessToAccountsWithType(accType, options: nil) { // Ask the user for permission to access their Twitter accounts
-			(granted, error) in
-			
-			if granted { // We may access their Twitter accounts
-				println("Permission to access Twitter accounts granted")
-				if (self.acStore.accounts != nil) && self.acStore.accounts?.count > 0 { // Are there even any Twitter accounts?
-					let twitterAccounts = self.acStore.accountsWithAccountType(accType) as! [ACAccount] // Get a list of ACAccounts
-					for t in twitterAccounts {
-						
-						self.accountDict[t.username] = t // Add those ACAccounts to a dictionary
-					}
-					println(self.accountDict) // Print the dictionary for good measure
-					self.tmAccountPopUp.addItemsWithTitles(self.accountDict.keys.array) // Populate the account list
-				} else { // There are no Twitter accounts registered in OS X
-					println("No Twitter accounts found")
-					
-					// Prepare an NSAlert
-					let alert = self.prepareAlert("No Twitter accounts found",
-						message: "To use TwitMin, you'll need to have at least one Twitter account set up in OS X.\nTo do that, go to System Preferences → Internet Accounts.",
-						buttons: ["Quit", "Open System Preferences…"])
-					
-					dispatch_async(dispatch_get_main_queue()) {
-						// The callback we're in right now isn't happening on the main thread, so I use dispatch_async to show the NSAlert on the main thread
-						alert.beginSheetModalForWindow(self, completionHandler: {
-							result in
-							
-							switch(result) {
-							case NSAlertFirstButtonReturn:
-								// User clicked the Quit button, do nothing
-								println("Quitting")
-							case NSAlertSecondButtonReturn:
-								// User clicked the Open System Preferences button, do just that
-								println("Opening InternetAccounts.prefPane")
-								NSWorkspace.sharedWorkspace().openURL(NSURL(fileURLWithPath: "/System/Library/PreferencePanes/InternetAccounts.prefPane"))
-							default:
-								// what
-								println("How the frick did you even get here")
-							}
-							
-							self.close() // There's nothing we can do. Just quit
-						})
-					}
-				}
-			} else { // We may not access their Twitter accounts
-				println("Permission denied")
-				
-				// Same as above
-				let alert = self.prepareAlert("Can't access Twitter",
-					message: "TwitMin needs access to Twitter in order to post tweets.\nGo to System Preferences → Security & Privacy → Privacy and allow TwitMin to access Twitter.",
-					buttons: ["Quit", "Open System Preferences…"])
-				dispatch_async(dispatch_get_main_queue()) {
-					alert.beginSheetModalForWindow(self, completionHandler: {
-						result in
-						
-						switch(result) {
-						case NSAlertFirstButtonReturn:
-							println("Quitting")
-						case NSAlertSecondButtonReturn:
-							println("Opening Security.prefPane")
-							NSWorkspace.sharedWorkspace().openURL(NSURL(fileURLWithPath: "/System/Library/PreferencePanes/Security.prefPane"))
-							// TODO: Actually open Sys Prefs on Privacy Tab
-						default:
-							println("How the frick did you even get here")
-						}
-						
-						self.close() // There's nothing we can do. Just quit
-					})
-				}
-				
-			}
-		}
+		self.avatarView.layer!.cornerRadius = self.avatarView.bounds.width / 2
+		self.avatarView.image = appDelegate.avatarDict[self.tmAccountPopUp.titleOfSelectedItem!]
 	}
 	
 	func windowWillShow() {
@@ -184,6 +103,10 @@ class TMTweetWindow: NSWindow, NSTextViewDelegate, NSTextStorageDelegate {
 			self.tmTextLengthLabel.textColor = NSColor.labelColor()
 			self.tmTweetButton.enabled = false
 		}
+	}
+	
+	@IBAction func accountListItemSelected(sender: NSPopUpButton) {
+		self.avatarView.image = appDelegate.avatarDict[self.tmAccountPopUp.titleOfSelectedItem!]
 	}
 	
 	func textDidChange(notification: NSNotification) {
@@ -222,62 +145,50 @@ class TMTweetWindow: NSWindow, NSTextViewDelegate, NSTextStorageDelegate {
 		println("Use Location: \(sender.state == NSOnState)")
 	}
 	
+	@IBAction func mediaImportButtonPressed(sender: NSButton) {
+		println("Media Import Button pressed")
+	}
+	
 	@IBAction func tweetButtonPressed(sender: NSButton) {
 		// Disable button so that this can't be called twice by accident
 		sender.enabled = false
 		
 		// Get the selected Twitter account
-		let selectedAccount = accountDict[self.tmAccountPopUp.titleOfSelectedItem!]
-		println(selectedAccount)
+		let selectedAccount = appDelegate.accountDict[self.tmAccountPopUp.titleOfSelectedItem!]
+		println(selectedAccount!)
 		
-		// Trim whitespace and newlines from the tweet text
-		let tweetText = self.tmTextView.string?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-		
-		// Check whether the tweet's length is valid
-		if self.tmTextLengthLabel.integerValue >= 0 && tweetText != "" {
-			let parameters = ["status" : tweetText!] // Twitter API stuff, we're setting the actual tweet text here
+		let tweetText = tmTextView.string!
+		if TwitterText.remainingCharacterCount(tweetText) >= 0 && !tweetText.isEmpty {
 			
-			// let requestURL = NSURL(string: "https://api.twitter.com/1.1/statuses/update_with_media.json") // This is the endpoint we'll use to upload images
-			let requestURL = NSURL(string: "https://api.twitter.com/1.1/statuses/update.json") // This is the regular text-only endpoint
-			
-			// Create a tweet post request
-			let postRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.POST, URL: requestURL, parameters: parameters)
-			postRequest.account = selectedAccount! // Use the selected Twitter account for posting
-			
-			// Perform the request
-			postRequest.performRequestWithHandler {
-				responseData, response, error in
-				
-				do {
-					// We'll try to parse Twitter's response here
-					let responseObject = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.AllowFragments)
-//					println(responseObject)
-				} catch {
-					// We're not doing anything with the response object right now, so this is okay
-					println("JSON object creation failed")
-				}
-				
-				// We're doing this next bit on the main thread because this callback is running on a different thread
-				// Not doing this on the main thread creates problems when the window is closed
-				dispatch_async(dispatch_get_main_queue()) {
-					if response.statusCode == 200 { // 200 = HTTP OK, Tweet was sent successfully
-						println("Tweet sent!")
-						self.close()
-					} else { // Anything but HTTP 200, which means the whole thing failed
-						if let errorMessage = self.statusCodes[response.statusCode] {
-							println("HTTP \(response.statusCode): \(errorMessage)")
-						} else {
-							println("Unknown error: HTTP \(response.statusCode)")
-						}
+		}
 
-						// Re-enable the button
-						sender.enabled = true
+		TweetWrapper.tweet(selectedAccount!, text: tmTextView.string!, location: nil) {
+			(responseData, response, error) in
+			
+			do {
+				// We'll try to parse Twitter's response here
+				let responseObject = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.AllowFragments)
+				println(responseObject)
+			} catch {
+				// We're not doing anything with the response object right now, so this is okay
+				println("JSON object creation failed")
+			}
+			
+			dispatch_async(dispatch_get_main_queue()) {
+				if response.statusCode == 200 { // 200 = HTTP OK, Tweet was sent successfully
+					println("Tweet sent!")
+					self.close()
+				} else { // Anything but HTTP 200, which means the whole thing failed
+					if let errorMessage = self.statusCodes[response.statusCode] {
+						println("HTTP \(response.statusCode): \(errorMessage)")
+					} else {
+						println("Unknown error: HTTP \(response.statusCode)")
 					}
+					
+					// Re-enable the button
+					sender.enabled = true
 				}
 			}
-		} else {
-			// This should never be reached
-			println("Tweet is an empty string")
 		}
 	}
 	

@@ -20,25 +20,26 @@
             <value key="maxSize" type="size" width="300" height="80"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="300" height="80"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <visualEffectView blendingMode="behindWindow" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="tQM-21-ZhF">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="80"/>
                         <subviews>
                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2j-Lo-h6T">
-                                <rect key="frame" x="0.0" y="37" width="300" height="43"/>
+                                <rect key="frame" x="60" y="37" width="240" height="43"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="2sh-Xd-6Tr">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="bar" continuousSpellChecking="YES" allowsUndo="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="iOJ-aI-OHs">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="300" height="43"/>
+                                            <size key="minSize" width="240" height="43"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <color key="insertionPointColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="300" height="43"/>
+                                            <size key="minSize" width="240" height="43"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <connections>
                                                 <outlet property="delegate" destination="F0z-JX-Cv5" id="DiA-DC-VBB"/>
@@ -52,21 +53,21 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="7s6-Ac-kmr">
-                                    <rect key="frame" x="284" y="0.0" width="16" height="43"/>
+                                    <rect key="frame" x="224" y="0.0" width="16" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="lSg-tu-yL6">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="lSg-tu-yL6" userLabel="Bottom View">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="37"/>
                                 <subviews>
                                     <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oxx-Um-lEC">
-                                        <rect key="frame" x="6" y="5" width="155" height="26"/>
+                                        <rect key="frame" x="5" y="7" width="146" height="22"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="tFl-h3-PDM"/>
+                                            <constraint firstAttribute="width" constant="140" id="tFl-h3-PDM"/>
                                         </constraints>
-                                        <popUpButtonCell key="cell" type="push" title="Twitter Accounts" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="i39-kn-YzR" id="vJs-Fr-Rpy">
+                                        <popUpButtonCell key="cell" type="push" title="Twitter Accounts" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="i39-kn-YzR" id="vJs-Fr-Rpy">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="menu"/>
+                                            <font key="font" metaFont="smallSystem"/>
                                             <menu key="menu" id="CwA-Bf-KRs">
                                                 <items>
                                                     <menuItem title="Twitter Accounts" state="on" id="i39-kn-YzR"/>
@@ -75,6 +76,9 @@
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>
+                                        <connections>
+                                            <action selector="accountListItemSelected:" target="F0z-JX-Cv5" id="bP1-FR-4OV"/>
+                                        </connections>
                                     </popUpButton>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DDa-YI-E3o">
                                         <rect key="frame" x="248" y="9" width="44" height="19"/>
@@ -90,7 +94,7 @@
                                             <constraint firstAttribute="height" constant="20" id="1ER-Z3-PsU"/>
                                             <constraint firstAttribute="width" constant="20" id="eIq-eD-8Kh"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="LocationArrow14" imagePosition="only" alignment="center" inset="2" id="4Kk-7g-f99">
+                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="LocationArrow14" imagePosition="overlaps" alignment="center" inset="2" id="4Kk-7g-f99">
                                             <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -104,10 +108,13 @@
                                             <constraint firstAttribute="height" constant="20" id="8kH-3K-Xaq"/>
                                             <constraint firstAttribute="width" constant="20" id="BpF-j8-T98"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="MediaImportIcon" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="LzB-zr-Ct4">
-                                            <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="MediaImportIcon3" imagePosition="overlaps" alignment="center" inset="2" id="LzB-zr-Ct4">
+                                            <behavior key="behavior" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="mediaImportButtonPressed:" target="F0z-JX-Cv5" id="1Sf-3F-zHh"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -121,14 +128,24 @@
                                     <constraint firstItem="oxx-Um-lEC" firstAttribute="centerY" secondItem="lSg-tu-yL6" secondAttribute="centerY" id="vwX-lK-PLf"/>
                                 </constraints>
                             </customView>
+                            <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Diy-5x-2jS">
+                                <rect key="frame" x="10" y="20" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="hH8-x3-ONT"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="DummyRect" id="ubQ-eD-DI2"/>
+                            </imageView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="Diy-5x-2jS" firstAttribute="leading" secondItem="tQM-21-ZhF" secondAttribute="leading" constant="10" id="5J2-Om-BSf"/>
                             <constraint firstItem="lSg-tu-yL6" firstAttribute="top" secondItem="A2j-Lo-h6T" secondAttribute="bottom" id="H6j-Vc-p1D"/>
                             <constraint firstItem="lSg-tu-yL6" firstAttribute="leading" secondItem="tQM-21-ZhF" secondAttribute="leading" id="MER-Cg-b9K"/>
+                            <constraint firstItem="A2j-Lo-h6T" firstAttribute="leading" secondItem="Diy-5x-2jS" secondAttribute="trailing" id="O2c-fS-hS5"/>
                             <constraint firstAttribute="trailing" secondItem="lSg-tu-yL6" secondAttribute="trailing" id="PZ3-Jh-hXX"/>
                             <constraint firstItem="A2j-Lo-h6T" firstAttribute="top" secondItem="tQM-21-ZhF" secondAttribute="top" id="WPc-r1-2fY"/>
                             <constraint firstAttribute="bottom" secondItem="lSg-tu-yL6" secondAttribute="bottom" id="bLU-st-uWn"/>
-                            <constraint firstItem="A2j-Lo-h6T" firstAttribute="leading" secondItem="tQM-21-ZhF" secondAttribute="leading" id="dc8-jW-RSU"/>
+                            <constraint firstItem="A2j-Lo-h6T" firstAttribute="leading" secondItem="tQM-21-ZhF" secondAttribute="leading" constant="60" id="dc8-jW-RSU"/>
+                            <constraint firstItem="Diy-5x-2jS" firstAttribute="top" secondItem="tQM-21-ZhF" secondAttribute="top" constant="10" id="jCS-5q-N6x"/>
                             <constraint firstAttribute="trailing" secondItem="A2j-Lo-h6T" secondAttribute="trailing" id="ldn-Lo-1eZ"/>
                             <constraint firstAttribute="bottom" secondItem="A2j-Lo-h6T" secondAttribute="bottom" constant="37" id="z6e-a4-OXB"/>
                         </constraints>
@@ -145,21 +162,7 @@
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="k6F-iZ-6Cr"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="RcT-Vy-r4g"/>
-                    <toolbarItem implicitItemIdentifier="4A8C0BC5-2D0C-4876-A3FE-D55E2905A1B4" label="Window Title" paletteLabel="Window Title" id="cAq-VE-Zhc">
-                        <nil key="toolTip"/>
-                        <size key="minSize" width="38" height="17"/>
-                        <size key="maxSize" width="84" height="17"/>
-                        <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="liy-fV-rl7">
-                            <rect key="frame" x="0.0" y="14" width="84" height="17"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="New Tweet" id="Izr-Ii-kHo">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="windowFrameTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                    </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="1DD7B129-FADB-40F1-9768-CE760676A8CC" label="Tweet Button" paletteLabel="Tweet Button" id="tLY-Xp-bCG">
+                    <toolbarItem implicitItemIdentifier="1DD7B129-FADB-40F1-9768-CE760676A8CC" label="" paletteLabel="Tweet Button" id="tLY-Xp-bCG">
                         <nil key="toolTip"/>
                         <size key="minSize" width="56" height="32"/>
                         <size key="maxSize" width="66" height="43"/>
@@ -179,16 +182,31 @@ DQ
                             </connections>
                         </button>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="E5CB0FA8-6343-4CE6-92EA-1CBA95CA9785" label="Adaptive Space" paletteLabel="Adaptive Space" tag="-1" id="etw-M0-e2B" customClass="TAAdaptiveSpaceItem"/>
+                    <toolbarItem implicitItemIdentifier="E5CB0FA8-6343-4CE6-92EA-1CBA95CA9785" label="" paletteLabel="Adaptive Space" tag="-1" id="etw-M0-e2B" customClass="TAAdaptiveSpaceItem"/>
+                    <toolbarItem implicitItemIdentifier="1049DF9E-6083-4ECA-AC0B-639BF8E0E761" label="" paletteLabel="Window Title" id="4Rx-dc-MCg">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="80" height="17"/>
+                        <size key="maxSize" width="84" height="17"/>
+                        <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="El4-8y-jWk">
+                            <rect key="frame" x="0.0" y="14" width="84" height="17"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="New Tweet" id="94z-Nq-cJs">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="windowFrameTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="etw-M0-e2B"/>
-                    <toolbarItem reference="cAq-VE-Zhc"/>
+                    <toolbarItem reference="4Rx-dc-MCg"/>
                     <toolbarItem reference="RcT-Vy-r4g"/>
                     <toolbarItem reference="tLY-Xp-bCG"/>
                 </defaultToolbarItems>
             </toolbar>
             <connections>
+                <outlet property="avatarView" destination="Diy-5x-2jS" id="pAa-TH-6BC"/>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
                 <outlet property="tmAccountPopUp" destination="oxx-Um-lEC" id="ceE-s5-ib4"/>
                 <outlet property="tmTextLengthLabel" destination="DDa-YI-E3o" id="zw3-C9-lxK"/>
@@ -196,11 +214,12 @@ DQ
                 <outlet property="tmTweetButton" destination="wlG-Rr-rGp" id="6mE-yl-QqO"/>
                 <outlet property="vfxView" destination="tQM-21-ZhF" id="MWX-xP-KE8"/>
             </connections>
-            <point key="canvasLocation" x="408" y="406"/>
+            <point key="canvasLocation" x="408" y="508"/>
         </window>
     </objects>
     <resources>
+        <image name="DummyRect" width="58" height="58"/>
         <image name="LocationArrow14" width="14" height="14"/>
-        <image name="MediaImportIcon" width="14" height="14"/>
+        <image name="MediaImportIcon3" width="14" height="14"/>
     </resources>
 </document>

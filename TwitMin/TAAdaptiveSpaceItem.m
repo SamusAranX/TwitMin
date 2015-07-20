@@ -44,7 +44,7 @@
 				NSRect nextFrame = nextItem.view.superview.frame;
 				NSRect toolbarFrame = nextItem.view.superview.superview.frame;
 				
-				space = (toolbarFrame.size.width - nextFrame.size.width) / 2 - thisFrame.origin.x - 6;
+				space = (toolbarFrame.size.width - nextFrame.size.width) / 2 - thisFrame.origin.x + 5; // Woo, magic numbers determined by wild guesses!
 				if (space < 0)
 					space = 0;
 			}

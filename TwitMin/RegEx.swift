@@ -24,6 +24,13 @@ class RegEx {
 	
 	func match(input: String) -> Bool {
 		let matches = self.expression!.matchesInString(input, options: [], range:NSMakeRange(0, input.characters.count))
+		
 		return matches.count > 0
+	}
+	
+	func range(input: String) -> Range<String.Index> {
+		let matches = self.expression!.matchesInString(input, options: [], range: NSMakeRange(0, input.characters.count))
+		
+		return matches[0].range.toRange(input)
 	}
 }
