@@ -109,44 +109,14 @@ class TweetWrapper: NSObject {
 			let postRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.POST, URL: requestURL, parameters: parameters)
 			postRequest.account = account // Use the passed account object for posting
 			
-			if media != nil && media!.count > 0 {
-				for path in media! {
-					//					postRequest.add
-				}
-			}
+//			if media != nil && media!.count > 0 {
+//				for path in media! {
+//					// TODO
+//				}
+//			}
 			
 			// Perform the request
 			postRequest.performRequestWithHandler(completion)
-			//			postRequest.performRequestWithHandler {
-			//				responseData, response, error in
-			//
-			//				//				do {
-			//				//					// We'll try to parse Twitter's response here
-			//				//					let responseObject = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.AllowFragments)
-			//				////					println(responseObject)
-			//				//				} catch {
-			//				//					// We're not doing anything with the response object right now, so this is okay
-			//				//					println("JSON object creation failed")
-			//				//				}
-			//
-			//				// We're doing this next bit on the main thread because this callback is running on a different thread
-			//				// Not doing this on the main thread creates problems when the window is closed
-			//				dispatch_async(dispatch_get_main_queue()) {
-			//					if response.statusCode == 200 { // 200 = HTTP OK, Tweet was sent successfully
-			//						println("Tweet sent!")
-			//						self.close()
-			//					} else { // Anything but HTTP 200, which means the whole thing failed
-			//						if let errorMessage = self.statusCodes[response.statusCode] {
-			//							println("HTTP \(response.statusCode): \(errorMessage)")
-			//						} else {
-			//							println("Unknown error: HTTP \(response.statusCode)")
-			//						}
-			//
-			//						// Re-enable the button
-			//						sender.enabled = true
-			//					}
-			//				}
-			//			}
 		} else {
 			// This should never be reached
 			println("Tweet is an empty string")

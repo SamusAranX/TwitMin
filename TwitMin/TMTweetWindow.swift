@@ -12,7 +12,7 @@ import Accounts
 import Social
 import CoreLocation
 
-class TMTweetWindow: NSWindow, NSTextViewDelegate, NSTextStorageDelegate {
+class TMTweetWindow: NSWindow, NSWindowDelegate, NSTextViewDelegate, NSTextStorageDelegate, CLLocationManagerDelegate {
 
 	@IBOutlet var vfxView: NSVisualEffectView!
 	
@@ -25,7 +25,11 @@ class TMTweetWindow: NSWindow, NSTextViewDelegate, NSTextStorageDelegate {
 	@IBOutlet var avatarBackgroundView: NSImageView!
 	@IBOutlet var avatarView: NSImageView!
 	
+	@IBOutlet var locationButton: NSButton!
+	@IBOutlet var mediaButton: NSButton!
+	
 	var appDelegate: AppDelegate!
+	var locationManager: CLLocationManager!
 	var geoCoder: CLGeocoder!
 	
 //	var acStore: ACAccountStore!
@@ -79,10 +83,16 @@ class TMTweetWindow: NSWindow, NSTextViewDelegate, NSTextStorageDelegate {
 		self.titleVisibility = NSWindowTitleVisibility.Hidden
 		
 		self.appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+		
+		self.delegate = self
+		
+		self.locationManager = CLLocationManager()
+		self.locationManager.delegate = self
+		self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+		self.locationManager.distanceFilter = 100
 		self.geoCoder = CLGeocoder()
 		
 		self.tmTextView.textContainerInset = NSSize(width: 4, height: 8)
-//		self.tmTextView.textColor = NSColor.labelColor()
 		self.tmTextView.textStorage!.delegate = self
 		
 		self.tmAccountPopUp.removeAllItems() // Remove Xcode's example items (Item 1, Item 2, etc.) from the popup button
@@ -102,7 +112,16 @@ class TMTweetWindow: NSWindow, NSTextViewDelegate, NSTextStorageDelegate {
 			self.tmTextLengthLabel.integerValue = 140
 			self.tmTextLengthLabel.textColor = NSColor.labelColor()
 			self.tmTweetButton.enabled = false
+			
+			self.locationButton.enabled = CLLocationManager.authorizationStatus() == .Authorized
+			self.locationManager.startUpdatingLocation()
 		}
+	}
+	
+	// NSWindowDelegate
+	func windowWillClose(notification: NSNotification) {
+		println("Window will close")
+		self.locationManager.stopUpdatingLocation()
 	}
 	
 	@IBAction func accountListItemSelected(sender: NSPopUpButton) {
@@ -125,6 +144,10 @@ class TMTweetWindow: NSWindow, NSTextViewDelegate, NSTextStorageDelegate {
 		}
 	}
 	
+	/*
+	*   TEXT STORAGE DELEGATE STUFF
+	*/
+	
 	override func textStorageDidProcessEditing(notification: NSNotification) {
 		let textStorage: NSTextStorage = notification.object as! NSTextStorage
 		let wholeRange = NSMakeRange(0, textStorage.length)
@@ -137,6 +160,27 @@ class TMTweetWindow: NSWindow, NSTextViewDelegate, NSTextStorageDelegate {
 			// Slightly darker blue on light background, slightly brighter blue on dark background
 			let entityColor = self.appearance == NSAppearanceNameVibrantDark ? NSColor(red:0.08, green:0.49, blue:0.98, alpha:1) : NSColor(calibratedRed:0.51, green:0.75, blue:0.99, alpha:1)
 			textStorage.addAttribute(NSForegroundColorAttributeName, value: entityColor, range: e.range)
+		}
+	}
+	
+	/*
+	*	LOCATION MANAGER DELEGATE STUFF
+	*/
+	
+	func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+		println("Authorization changed to \(status.name())")
+		self.locationButton.enabled = status == .Authorized
+	}
+	
+	func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+		println("Location Manager failed with error: \(error)")
+	}
+	
+	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
+		if !locations.isEmpty {
+			println("Location was updated: \(locations.first)")
+		} else {
+			println("For some reason, the locations array is empty. Welp")
 		}
 	}
 	
@@ -158,38 +202,36 @@ class TMTweetWindow: NSWindow, NSTextViewDelegate, NSTextStorageDelegate {
 		println(selectedAccount!)
 		
 		let tweetText = tmTextView.string!
+		let tweetLocation = (locationButton.enabled && locationButton.state == NSOnState) ? locationManager.location : nil
 		if TwitterText.remainingCharacterCount(tweetText) >= 0 && !tweetText.isEmpty {
-			
-		}
-
-		TweetWrapper.tweet(selectedAccount!, text: tmTextView.string!, location: nil) {
-			(responseData, response, error) in
-			
-			do {
-				// We'll try to parse Twitter's response here
-				let responseObject = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.AllowFragments)
-				println(responseObject)
-			} catch {
-				// We're not doing anything with the response object right now, so this is okay
-				println("JSON object creation failed")
-			}
-			
-			dispatch_async(dispatch_get_main_queue()) {
-				if response.statusCode == 200 { // 200 = HTTP OK, Tweet was sent successfully
-					println("Tweet sent!")
-					self.close()
-				} else { // Anything but HTTP 200, which means the whole thing failed
-					if let errorMessage = self.statusCodes[response.statusCode] {
-						println("HTTP \(response.statusCode): \(errorMessage)")
-					} else {
-						println("Unknown error: HTTP \(response.statusCode)")
+			TweetWrapper.tweet(selectedAccount!, text: tmTextView.string!, location: tweetLocation) {
+				(responseData, response, error) in
+				
+				do {
+					// We'll try to parse Twitter's response here
+					let responseObject = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.AllowFragments)
+					println(responseObject)
+				} catch {
+					// We're not doing anything with the response object right now, so this is okay
+					println("JSON object creation failed")
+				}
+				
+				dispatch_async(dispatch_get_main_queue()) {
+					if response.statusCode == 200 { // 200 = HTTP OK, Tweet was sent successfully
+						println("Tweet sent!")
+						self.close()
+					} else { // Anything but HTTP 200, which means the whole thing failed
+						if let errorMessage = self.statusCodes[response.statusCode] {
+							println("HTTP \(response.statusCode): \(errorMessage)")
+						} else {
+							println("Unknown error: HTTP \(response.statusCode)")
+						}
+						
+						// Re-enable the button
+						sender.enabled = true
 					}
-					
-					// Re-enable the button
-					sender.enabled = true
 				}
 			}
 		}
 	}
-	
 }

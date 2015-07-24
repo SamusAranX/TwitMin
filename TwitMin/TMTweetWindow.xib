@@ -88,13 +88,13 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2v4-0b-R2f">
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2v4-0b-R2f" userLabel="Location Button">
                                         <rect key="frame" x="220" y="7" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="1ER-Z3-PsU"/>
                                             <constraint firstAttribute="width" constant="20" id="eIq-eD-8Kh"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="LocationArrow14" imagePosition="overlaps" alignment="center" inset="2" id="4Kk-7g-f99">
+                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="LocationArrow" imagePosition="overlaps" alignment="center" inset="2" id="4Kk-7g-f99">
                                             <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -102,13 +102,13 @@
                                             <action selector="locationButtonPressed:" target="F0z-JX-Cv5" id="8St-Lg-r26"/>
                                         </connections>
                                     </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mdb-0n-K8z">
+                                    <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mdb-0n-K8z" userLabel="Media Button">
                                         <rect key="frame" x="192" y="7" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="8kH-3K-Xaq"/>
                                             <constraint firstAttribute="width" constant="20" id="BpF-j8-T98"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="MediaImportIcon3" imagePosition="overlaps" alignment="center" inset="2" id="LzB-zr-Ct4">
+                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="MediaImportIcon3" imagePosition="overlaps" alignment="center" enabled="NO" inset="2" id="LzB-zr-Ct4">
                                             <behavior key="behavior" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -208,6 +208,8 @@ DQ
             <connections>
                 <outlet property="avatarView" destination="Diy-5x-2jS" id="pAa-TH-6BC"/>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+                <outlet property="locationButton" destination="2v4-0b-R2f" id="bUj-xc-h2w"/>
+                <outlet property="mediaButton" destination="Mdb-0n-K8z" id="xIc-0x-2M5"/>
                 <outlet property="tmAccountPopUp" destination="oxx-Um-lEC" id="ceE-s5-ib4"/>
                 <outlet property="tmTextLengthLabel" destination="DDa-YI-E3o" id="zw3-C9-lxK"/>
                 <outlet property="tmTextView" destination="iOJ-aI-OHs" id="b9q-ub-jbl"/>
@@ -219,7 +221,7 @@ DQ
     </objects>
     <resources>
         <image name="DummyRect" width="58" height="58"/>
-        <image name="LocationArrow14" width="14" height="14"/>
+        <image name="LocationArrow" width="14" height="14"/>
         <image name="MediaImportIcon3" width="14" height="14"/>
     </resources>
 </document>

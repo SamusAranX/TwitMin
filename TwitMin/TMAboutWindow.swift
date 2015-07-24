@@ -33,8 +33,7 @@ class TMAboutWindow: NSWindow {
 	
 	func initialize() {
 		let versionNumber = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"]!
-		let buildNumber = NSBundle.mainBundle().infoDictionary!["CFBundleVersion"]!
-		aboutVersionLabel.stringValue = "Version \(versionNumber) (\(buildNumber))"
+		aboutVersionLabel.stringValue = "Version \(versionNumber)"
 		
 		let path = NSBundle.mainBundle().pathForResource("Credits", ofType: "rtf")!
 		let rtfData = NSData(contentsOfFile: path)!

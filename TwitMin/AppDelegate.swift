@@ -9,7 +9,6 @@
 import AppKit
 import Cocoa
 import Carbon
-import CoreLocation
 import Accounts
 
 /* Silly not-quite-hack to work around a bug in the first beta of Swift 2.0
@@ -19,7 +18,7 @@ func println<T>(value: T) {
 }
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, CLLocationManagerDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	var tweetWindowController: TMTweetWindowController!
 	var preferencesWindowController: TMPreferencesWindowController!
@@ -31,7 +30,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, CLLocationManagerDelegate {
 	var statusBarItem: NSStatusItem!
 	var hotKeyCenter: DDHotKeyCenter!
 	var composeHotKey: DDHotKey!
-	var locationManager: CLLocationManager!
 	
 	var accountStore: ACAccountStore!
 	var accountDict: [String: ACAccount]!
@@ -153,14 +151,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, CLLocationManagerDelegate {
 		let asURL2 = NSURL(fileURLWithPath: asPath2)
 		accountsScript = NSAppleScript(contentsOfURL: asURL1, error: nil)
 		privacyScript = NSAppleScript(contentsOfURL: asURL2, error: nil)
-		
-		// Initialize the location manager, but don't start it yet
-		// We'll do that on the first activation of the location button inside the tweet window
-		locationManager = CLLocationManager()
-		locationManager.delegate = self
-		locationManager.desiredAccuracy = kCLLocationAccuracyBest
-		locationManager.distanceFilter = 100
-		//locationManager.startUpdatingLocation()
 	}
 	
 	// This method creates a ready-made NSAlert for us
@@ -184,21 +174,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, CLLocationManagerDelegate {
 		if tweetWindowController.window != nil && tweetWindowController.window!.visible {
 			tweetWindowController.window?.appearance = systemAppearance
 		}
-		
-		
-		
-		// On second thought, let's not do this
-		//		if preferencesWindowController.window != nil && preferencesWindowController.window!.visible {
-		//			preferencesWindowController.window?.appearance = systemAppearance
-		//		}
-		//		if aboutWindowController.window != nil && aboutWindowController.window!.visible {
-		//			aboutWindowController.window?.appearance = systemAppearance
-		//		}
 	}
 	
 	// IBAction that gets called from the menu bar item
 	@IBAction func showTweetWindow(sender: NSMenuItem) {
 		self.actuallyShowTweetWindow()
+	}
+	
+	@IBAction func showPreferencesWindow(sender: AnyObject) {
+		NSApp.activateIgnoringOtherApps(true)
+		preferencesWindowController.showWindow(nil)
 	}
 	
 	func actuallyShowTweetWindow() {
@@ -220,26 +205,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, CLLocationManagerDelegate {
 		// Insert code here to tear down your application
 		println("Deregistering hotkeys")
 		hotKeyCenter.unregisterAllHotKeys()
-	}
-	
-	/*
-	*	LOCATION MANAGER DELEGATE STUFF
-	*/
-	
-	func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-		println("Authorization changed to \(status.name())")
-	}
-	
-	func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-		println("Location Manager failed with error: \(error)")
-	}
-	
-	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
-		if !locations.isEmpty {
-			println("Location was updated")
-		} else {
-			println("For some reason, the locations array is empty. Welp")
-		}
 	}
 	
 }

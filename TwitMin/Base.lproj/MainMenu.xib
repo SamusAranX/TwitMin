@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8121.17" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8152.3" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8121.17"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8152.3"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -619,6 +619,11 @@ DQ
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="sGp-rN-1hu"/>
+                <menuItem title="Preferences…" hidden="YES" keyEquivalent="," id="QSq-8W-qnC">
+                    <connections>
+                        <action selector="showPreferencesWindow:" target="Voe-Tx-rLC" id="GQx-lh-sIX"/>
+                    </connections>
+                </menuItem>
                 <menuItem title="About TwitMin" id="8Rk-OE-Wez">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
