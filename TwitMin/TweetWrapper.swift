@@ -14,8 +14,12 @@ import CoreLocation
 class TweetWrapper: NSObject {
 	
 	class func getUserAvatar(account: ACAccount, completion: (NSImage?) -> ()) {
-		let documentsPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).first
-		let imagePath = documentsPath!.stringByAppendingPathComponent("avatar_\(account.username).png")
+		let documentsPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).first!
+		
+		let imageURL = NSURL(fileURLWithPath: documentsPath).URLByAppendingPathComponent("avatar_\(account.username).png")
+		let imagePath = imageURL.path!
+		
+//		let imagePath = documentsPath!.stringByAppendingPathComponent("avatar_\(account.username).png")
 		let defaultsKey = "avatarURL_\(account.username)"
 		let fileManager = NSFileManager()
 		
@@ -72,7 +76,7 @@ class TweetWrapper: NSObject {
 							completion(nil)
 						}
 					}
-					dataTask!.resume()
+					dataTask.resume()
 				}
 			} catch {
 				println("Exception thrown")

@@ -40,7 +40,8 @@ extension String {
 			return nil
 		}
 		
-		let i = advance(self.startIndex, index)
+		let i = index.advancedBy(0)
+//		let i = advance(self.startIndex, index)
 		return String(self[i])
 	}
 	
@@ -49,16 +50,20 @@ extension String {
 			return nil
 		}
 		
-		let range = Range(start: advance(startIndex, range.startIndex), end: advance(startIndex, range.endIndex))
+		let _range = Range(start: startIndex.advancedBy(range.startIndex), end: startIndex.advancedBy(range.endIndex))
+//		let _range = Range(start: advance(startIndex, range.startIndex), end: advance(startIndex, range.endIndex))
 		
-		return self[range]
+		return self[_range]
 	}
 }
 
 extension NSRange {
 	func toRange(string: String) -> Range<String.Index> {
-		let startIndex = advance(string.startIndex, location)
-		let endIndex = advance(startIndex, length)
+		// let startIndex = advance(string.startIndex, location)
+		let startIndex = string.startIndex.advancedBy(location)
+		// let endIndex = advance(startIndex, length)
+		let endIndex = startIndex.advancedBy(length)
+		
 		return startIndex..<endIndex
 	}
 }
@@ -68,7 +73,8 @@ extension NSColor {
 		var hex = hexString
 		
 		if hex.hasPrefix("#") {
-			hex = hex.substringFromIndex(advance(hex.startIndex, 1))
+			let substrIndex = hex.startIndex.advancedBy(1)
+			hex = hex.substringFromIndex(substrIndex)
 		}
 		
 		let hexRegex = RegEx("^([0-9a-f]){3}$|^([0-9a-f]){6}$")

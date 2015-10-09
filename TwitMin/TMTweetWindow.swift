@@ -79,6 +79,7 @@ class TMTweetWindow: NSWindow, NSWindowDelegate, NSTextViewDelegate, NSTextStora
 		272: "You are not muting the specified user."
 	]
 	
+	// Called in Tweet Window Controller
 	func initialize() {
 		self.titleVisibility = NSWindowTitleVisibility.Hidden
 		
@@ -96,7 +97,7 @@ class TMTweetWindow: NSWindow, NSWindowDelegate, NSTextViewDelegate, NSTextStora
 		self.tmTextView.textStorage!.delegate = self
 		
 		self.tmAccountPopUp.removeAllItems() // Remove Xcode's example items (Item 1, Item 2, etc.) from the popup button
-		self.tmAccountPopUp.addItemsWithTitles(appDelegate.accountDict.keys.array) // Populate the account list
+		self.tmAccountPopUp.addItemsWithTitles(Array(appDelegate.accountDict.keys)) // Populate the account list
 		
 		self.avatarView.layer!.cornerRadius = self.avatarView.bounds.width / 2
 		self.avatarView.image = appDelegate.avatarDict[self.tmAccountPopUp.titleOfSelectedItem!]
