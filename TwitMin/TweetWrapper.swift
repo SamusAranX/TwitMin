@@ -18,8 +18,8 @@ class TweetWrapper: NSObject {
 		
 		let imageURL = NSURL(fileURLWithPath: documentsPath).URLByAppendingPathComponent("avatar_\(account.username).png")
 		let imagePath = imageURL.path!
+		print(imagePath)
 		
-//		let imagePath = documentsPath!.stringByAppendingPathComponent("avatar_\(account.username).png")
 		let defaultsKey = "avatarURL_\(account.username)"
 		let fileManager = NSFileManager()
 		

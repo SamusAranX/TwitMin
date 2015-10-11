@@ -99,6 +99,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 							
 							if image != nil {
 								self.avatarDict[t.username] = image
+								self.tweetWindowController.avatarImageDownloaded(t.username)
 							} else {
 								println("Couldn't retrieve avatar for \(t.username)")
 							}

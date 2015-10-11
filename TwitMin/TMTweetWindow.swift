@@ -93,6 +93,7 @@ class TMTweetWindow: NSWindow, NSWindowDelegate, NSTextViewDelegate, NSTextStora
 		self.locationManager.distanceFilter = 100
 		self.geoCoder = CLGeocoder()
 		
+		self.tmTextView.font = NSFont.systemFontOfSize(12)
 		self.tmTextView.textContainerInset = NSSize(width: 4, height: 8)
 		self.tmTextView.textStorage!.delegate = self
 		
@@ -100,7 +101,16 @@ class TMTweetWindow: NSWindow, NSWindowDelegate, NSTextViewDelegate, NSTextStora
 		self.tmAccountPopUp.addItemsWithTitles(Array(appDelegate.accountDict.keys)) // Populate the account list
 		
 		self.avatarView.layer!.cornerRadius = self.avatarView.bounds.width / 2
-		self.avatarView.image = appDelegate.avatarDict[self.tmAccountPopUp.titleOfSelectedItem!]
+		updateAvatarImageView()
+	}
+	
+	func updateAvatarImageView() {
+		let avatarImage = appDelegate.avatarDict[self.tmAccountPopUp.titleOfSelectedItem!]
+		if avatarImage == nil {
+			self.avatarView.image = NSImage(named: "DummyRect")
+		} else {
+			self.avatarView.image = appDelegate.avatarDict[self.tmAccountPopUp.titleOfSelectedItem!]
+		}
 	}
 	
 	func windowWillShow() {
@@ -126,7 +136,7 @@ class TMTweetWindow: NSWindow, NSWindowDelegate, NSTextViewDelegate, NSTextStora
 	}
 	
 	@IBAction func accountListItemSelected(sender: NSPopUpButton) {
-		self.avatarView.image = appDelegate.avatarDict[self.tmAccountPopUp.titleOfSelectedItem!]
+		updateAvatarImageView()
 	}
 	
 	func textDidChange(notification: NSNotification) {

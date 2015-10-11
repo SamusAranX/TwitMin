@@ -73,7 +73,7 @@
                                         <animations/>
                                         <popUpButtonCell key="cell" type="push" title="Twitter Accounts" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="i39-kn-YzR" id="vJs-Fr-Rpy">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="smallSystem"/>
+                                            <font key="font" metaFont="system" size="11"/>
                                             <menu key="menu" id="CwA-Bf-KRs">
                                                 <items>
                                                     <menuItem title="Twitter Accounts" state="on" id="i39-kn-YzR"/>
@@ -90,7 +90,7 @@
                                         <rect key="frame" x="248" y="9" width="44" height="19"/>
                                         <animations/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="140" bezelStyle="round" id="ctz-FO-uct">
-                                            <font key="font" metaFont="smallSystem"/>
+                                            <font key="font" metaFont="system" size="11"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -102,7 +102,7 @@
                                             <constraint firstAttribute="width" constant="20" id="eIq-eD-8Kh"/>
                                         </constraints>
                                         <animations/>
-                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="LocationArrow" imagePosition="overlaps" alignment="center" inset="2" id="4Kk-7g-f99">
+                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="LocationArrow" imagePosition="only" alignment="center" inset="2" id="4Kk-7g-f99">
                                             <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -185,7 +185,7 @@
                             <animations/>
                             <buttonCell key="cell" type="push" title="Tweet" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PbG-gX-Dgt">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="smallSystem"/>
+                                <font key="font" metaFont="system" size="11"/>
                                 <string key="keyEquivalent" base64-UTF8="YES">
 DQ
 </string>

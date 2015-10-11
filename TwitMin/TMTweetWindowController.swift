@@ -20,6 +20,12 @@ class TMTweetWindowController: NSWindowController {
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     }
 	
+	func avatarImageDownloaded(username: String) {
+		dispatch_async(dispatch_get_main_queue()) {
+			self.tweetWindow.updateAvatarImageView()
+		}
+	}
+	
 	override func showWindow(sender: AnyObject?) {
 		self.tweetWindow.windowWillShow()
 		
