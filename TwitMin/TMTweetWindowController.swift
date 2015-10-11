@@ -16,8 +16,6 @@ class TMTweetWindowController: NSWindowController {
         super.windowDidLoad()
 
 		self.tweetWindow.initialize()
-		
-        // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     }
 	
 	func avatarImageDownloaded(username: String) {
