@@ -114,7 +114,7 @@ class TMTweetWindow: NSWindow, NSWindowDelegate, NSTextViewDelegate, NSTextStora
 	
 	func windowWillShow() {
 		if !self.isVisible {
-			let systemAppearanceName = (NSUserDefaults.standardUserDefaults().stringForKey("AppleInterfaceStyle") ?? "Light").lowercased()
+			let systemAppearanceName = (UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light").lowercased()
 			let systemAppearance = systemAppearanceName == "dark" ? NSAppearance(named: NSAppearanceNameVibrantDark) : NSAppearance(named: NSAppearanceNameVibrantLight)
 			self.appearance = systemAppearance
 			
@@ -144,8 +144,8 @@ class TMTweetWindow: NSWindow, NSWindowDelegate, NSTextViewDelegate, NSTextStora
 			
 			// Pretty sure that someone smarter than me could do this with Cocoa Bindings
 			// I didn't because Cocoa Bindings don't make any damn sense
-			self.tmTextLengthLabel.textColor = remainingChars >= 0 ? NSColor.labelColor() : appDelegate.UIColorDict["TextLengthLabelRed"]
-			self.tmTweetButton.enabled = remainingChars < 140 && remainingChars >= 0
+			self.tmTextLengthLabel.textColor = remainingChars >= 0 ? NSColor.labelColor : appDelegate.UIColorDict["TextLengthLabelRed"]
+			self.tmTweetButton.isEnabled = remainingChars < 140 && remainingChars >= 0
 		} else {
 			println("Tweet text is nil")
 		}
@@ -180,11 +180,11 @@ class TMTweetWindow: NSWindow, NSWindowDelegate, NSTextViewDelegate, NSTextStora
 		textStorage.removeAttribute(NSForegroundColorAttributeName, range: wholeRange)
 		textStorage.addAttribute(NSForegroundColorAttributeName, value: NSColor.labelColor, range: wholeRange)
 		
-		let entities = TwitterText.entitiesInText(textStorage.string) as! [TwitterTextEntity]
+		let entities = TwitterText.entities(inText: textStorage.string) 
 		// println(entities)
 		for e in entities {
 			// Slightly darker blue on light background, slightly brighter blue on dark background
-			let entityColor = self.appearance == NSAppearanceNameVibrantDark ? NSColor(red:0.08, green:0.49, blue:0.98, alpha:1) : NSColor(calibratedRed:0.51, green:0.75, blue:0.99, alpha:1)
+			let entityColor = self.appearance == NSAppearance(named: NSAppearanceNameVibrantDark) ? NSColor(red:0.08, green:0.49, blue:0.98, alpha:1) : NSColor(calibratedRed:0.51, green:0.75, blue:0.99, alpha:1)
 			textStorage.addAttribute(NSForegroundColorAttributeName, value: entityColor, range: e.range)
 		}
 	}
@@ -204,7 +204,7 @@ class TMTweetWindow: NSWindow, NSWindowDelegate, NSTextViewDelegate, NSTextStora
 	
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 		if !locations.isEmpty {
-			println("Location was updated: \(locations.first)")
+			println("Location was updated: \(String(describing: locations.first))")
 		} else {
 			println("For some reason, the locations array is empty. Welp")
 		}
@@ -243,7 +243,7 @@ class TMTweetWindow: NSWindow, NSWindowDelegate, NSTextViewDelegate, NSTextStora
 				
 				do {
 					// We'll try to parse Twitter's response here
-					let responseObject = try JSONSerialization.jsonObject(with: responseData, options: JSONSerialization.ReadingOptions.allowFragments)
+					let responseObject = try JSONSerialization.jsonObject(with: responseData!, options: JSONSerialization.ReadingOptions.allowFragments)
 					println(responseObject)
 				} catch {
 					// We're not doing anything with the response object right now, so this is okay
@@ -251,14 +251,14 @@ class TMTweetWindow: NSWindow, NSWindowDelegate, NSTextViewDelegate, NSTextStora
 				}
 				
 				DispatchQueue.main.async {
-					if response.statusCode == 200 { // 200 = HTTP OK, Tweet was sent successfully
+					if response!.statusCode == 200 { // 200 = HTTP OK, Tweet was sent successfully
 						println("Tweet sent!")
 						self.close()
 					} else { // Anything but HTTP 200, which means the whole thing failed
-						if let errorMessage = self.statusCodes[response.statusCode] {
-							println("HTTP \(response.statusCode): \(errorMessage)")
+						if let errorMessage = self.statusCodes[response!.statusCode] {
+							println("HTTP \(response!.statusCode): \(errorMessage)")
 						} else {
-							println("Unknown error: HTTP \(response.statusCode)")
+							println("Unknown error: HTTP \(response!.statusCode)")
 						}
 						
 						// Re-enable the button

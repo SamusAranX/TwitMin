@@ -36,7 +36,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		// Add system theme change listener
-		DistributedNotificationCenter.default().addObserver(self, selector: #selector(systemThemeChanged), name: "AppleInterfaceThemeChangedNotification", object: nil)
+		DistributedNotificationCenter.default().addObserver(self, selector: #selector(systemThemeChanged), name: NSNotification.Name(rawValue: "AppleInterfaceThemeChangedNotification"), object: nil)
 		
 		// Load colors from UIColors.plist, we'll probably use them in a later version
 		if let path = Bundle.main.path(forResource: "UIColors", ofType: "plist") {
@@ -62,14 +62,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		aboutWindowController = TMAboutWindowController(windowNibName: "TMAboutWindow")
 		
 		// Initialize the tweet window hotkey
-		hotKeyCenter = DDHotKeyCenter.sharedHotKeyCenter()
+		hotKeyCenter = DDHotKeyCenter.shared()
 		let hotKeyOptionSet: NSEventModifierFlags = [.command, .shift]
-		composeHotKey = DDHotKey(keyCode: UInt16(kVK_Return), modFlags: hotKeyOptionSet, task: {
+		composeHotKey = DDHotKey(keyCode: UInt16(kVK_Return), modifierFlags: hotKeyOptionSet.rawValue, task: {
 			event in
 			
 			self.actuallyShowTweetWindow()
 		})
-		hotKeyCenter.registerHotKey(composeHotKey)
+		hotKeyCenter.register(composeHotKey)
 		
 		// Get all registered Twitter accounts
 		accountStore = ACAccountStore()
@@ -80,7 +80,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			
 			if granted { // Access to Twitter accounts granted
 				let twitterAccounts = self.accountStore.accounts(with: accType) as! [ACAccount]
-				if (self.accountStore.accounts != nil) && !self.accountStore.accounts!.isEmpty && !twitterAccounts.isEmpty {
+				if (self.accountStore.accounts != nil) && self.accountStore.accounts!.count > 0 && !twitterAccounts.isEmpty {
 					println(twitterAccounts)
 					
 					self.accountDict = [String: ACAccount]()
@@ -163,7 +163,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	func systemThemeChanged(_ notification: Notification) {
 		// If the user changes their system's color scheme, we'll know
-		let systemAppearanceName = (NSUserDefaults.standardUserDefaults().stringForKey("AppleInterfaceStyle") ?? "Light").lowercased()
+        let systemAppearanceName = (UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light").lowercased()
 		let systemAppearance = systemAppearanceName == "dark" ? NSAppearance(named: NSAppearanceNameVibrantDark) : NSAppearance(named: NSAppearanceNameVibrantLight)
 		
 		if tweetWindowController.window != nil && tweetWindowController.window!.isVisible {

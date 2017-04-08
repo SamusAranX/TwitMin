@@ -13,19 +13,19 @@ import CoreLocation
 
 class TweetWrapper: NSObject {
 	
-	class func getUserAvatar(_ account: ACAccount, completion: (NSImage?) -> ()) {
+	class func getUserAvatar(_ account: ACAccount, completion: @escaping (NSImage?) -> ()) {
 		let documentsPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!
 		
 		let imageURL = URL(fileURLWithPath: documentsPath).appendingPathComponent("avatar_\(account.username).png")
-		let imagePath = imageURL.path!
+		let imagePath = imageURL.path
 		print(imagePath)
 		
 		let defaultsKey = "avatarURL_\(account.username)"
 		let fileManager = FileManager()
 		
 		let requestURL = URL(string: "https://api.twitter.com/1.1/users/show.json")
-		let requestParameters = ["screen_name": account.username, "include_entities": "false"]
-		let getRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, url: requestURL, parameters: requestParameters)
+        let requestParameters: [String: Any] = ["screen_name": account.username, "include_entities": "false"]
+        let getRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, url: requestURL, parameters: requestParameters)!
 		getRequest.account = account
 		
 		getRequest.perform() {
@@ -33,11 +33,11 @@ class TweetWrapper: NSObject {
 			
 			do {
 				// We'll try to parse Twitter's response here
-				let responseObject = try JSONSerialization.jsonObject(with: responseData, options: JSONSerialization.ReadingOptions.allowFragments)
+                let responseObject = try JSONSerialization.jsonObject(with: responseData!, options: JSONSerialization.ReadingOptions.allowFragments) as! [String: Any]
 				var avatarURLString = responseObject["profile_image_url_https"] as! String
-				let sizeRegex = RegEx("(_normal|_bigger|_mini)")
-				let sizeRange = sizeRegex!.range(avatarURLString)
-				avatarURLString = avatarURLString.replacingCharacters(in: sizeRange, with: "")
+				let sizeRegex = RegEx("(_normal|_bigger|_mini)")!
+				let sizeRange = sizeRegex.range(avatarURLString)
+                avatarURLString = (avatarURLString as NSString).replacingCharacters(in: sizeRange, with: "")
 				
 				let savedURLString = UserDefaults.standard.string(forKey: defaultsKey)
 				
@@ -85,11 +85,11 @@ class TweetWrapper: NSObject {
 		}
 	}
 	
-	class func tweet(_ account: ACAccount, text: String, location: CLLocation?, completion: (data: Data!, response: HTTPURLResponse!, error: NSError!) -> Void) {
+	class func tweet(_ account: ACAccount, text: String, location: CLLocation?, completion: @escaping (_ data: Data?, _ response: HTTPURLResponse?, _ error: Error?) -> Void) {
 		self.tweet(account, text: text, location: location, media: nil, completion: completion)
 	}
 	
-	class func tweet(_ account: ACAccount, text: String, location: CLLocation?, media: [String]?, completion: (data: Data!, response: HTTPURLResponse!, error: NSError!) -> Void) {
+	class func tweet(_ account: ACAccount, text: String, location: CLLocation?, media: [String]?, completion: @escaping (_ data: Data?, _ response: HTTPURLResponse?, _ error: Error?) -> Void) {
 		// Trim whitespace and newlines from the tweet text
 		let tweetText = text.trim()
 		
@@ -110,7 +110,7 @@ class TweetWrapper: NSObject {
 			}
 			
 			// Create a tweet post request
-			let postRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.POST, url: requestURL, parameters: parameters)
+			let postRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.POST, url: requestURL, parameters: parameters)!
 			postRequest.account = account // Use the passed account object for posting
 			
 //			if media != nil && media!.count > 0 {

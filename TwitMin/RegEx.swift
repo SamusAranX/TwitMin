@@ -28,9 +28,9 @@ class RegEx {
 		return matches.count > 0
 	}
 	
-	func range(_ input: String) -> Range<String.Index> {
+	func range(_ input: String) -> NSRange {
 		let matches = self.expression!.matches(in: input, options: [], range: NSMakeRange(0, input.characters.count))
 		
-		return matches[0].range.toRange(input)
+		return matches.first!.range
 	}
 }
