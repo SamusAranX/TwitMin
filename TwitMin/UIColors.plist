@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>TextLengthLabelRed</key>
+	<string>#FF2400</string>
 	<key>BrightThemeRed</key>
 	<string>#7E0608</string>
 	<key>DarkThemeRed</key>

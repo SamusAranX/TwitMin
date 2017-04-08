@@ -10,15 +10,15 @@ import Cocoa
 import CoreGraphics
 
 extension NSAttributedString {
-	class func hyperlinkFromString(inString: String, url: NSURL) -> NSAttributedString {
+	class func hyperlinkFromString(_ inString: String, url: URL) -> NSAttributedString {
 		let attrString = NSMutableAttributedString(string: inString)
 		let range = NSMakeRange(0, attrString.length)
 		
 		attrString.beginEditing()
 		attrString.addAttribute(NSLinkAttributeName, value: url.absoluteString, range: range)
 		
-		attrString.addAttribute(NSForegroundColorAttributeName, value: NSColor.blueColor(), range: range)
-		attrString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.StyleSingle.rawValue, range: range)
+		attrString.addAttribute(NSForegroundColorAttributeName, value: NSColor.blue, range: range)
+		attrString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: range)
 		
 		attrString.endEditing()
 		
@@ -32,18 +32,18 @@ class TMAboutWindow: NSWindow {
 	@IBOutlet var aboutTextLabel: NSTextField!
 	
 	func initialize() {
-		let versionNumber = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"]!
+		let versionNumber = Bundle.main.infoDictionary!["CFBundleShortVersionString"]!
 		aboutVersionLabel.stringValue = "Version \(versionNumber)"
 		
-		let path = NSBundle.mainBundle().pathForResource("Credits", ofType: "rtf")!
-		let rtfData = NSData(contentsOfFile: path)!
-		let aboutText = NSMutableAttributedString(RTF: rtfData, documentAttributes: nil)
+		let path = Bundle.main.path(forResource: "Credits", ofType: "rtf")!
+		let rtfData = try! Data(contentsOf: URL(fileURLWithPath: path))
+		let aboutText = NSMutableAttributedString(rtf: rtfData, documentAttributes: nil)
 		let paragraphStyle = NSMutableParagraphStyle()
 		paragraphStyle.lineSpacing = 1
-		paragraphStyle.alignment = NSTextAlignment.Center
+		paragraphStyle.alignment = NSTextAlignment.center
 
 		aboutText!.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, aboutText!.length))
-		aboutText!.addAttribute(NSFontAttributeName, value: NSFont.systemFontOfSize(11), range: NSMakeRange(0, aboutText!.length))
+		aboutText!.addAttribute(NSFontAttributeName, value: NSFont.systemFont(ofSize: 11), range: NSMakeRange(0, aboutText!.length))
 		
 		aboutTextLabel.allowsEditingTextAttributes = true
 		aboutTextLabel.attributedStringValue = aboutText!

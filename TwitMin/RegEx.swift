@@ -16,20 +16,20 @@ class RegEx {
 	init?(_ pattern: String) {
 		self.pattern = pattern
 		do {
-			try self.expression = NSRegularExpression(pattern: self.pattern, options: [.CaseInsensitive])
+			try self.expression = NSRegularExpression(pattern: self.pattern, options: [.caseInsensitive])
 		} catch {
 			return nil
 		}
 	}
 	
-	func match(input: String) -> Bool {
-		let matches = self.expression!.matchesInString(input, options: [], range:NSMakeRange(0, input.characters.count))
+	func match(_ input: String) -> Bool {
+		let matches = self.expression!.matches(in: input, options: [], range:NSMakeRange(0, input.characters.count))
 		
 		return matches.count > 0
 	}
 	
-	func range(input: String) -> Range<String.Index> {
-		let matches = self.expression!.matchesInString(input, options: [], range: NSMakeRange(0, input.characters.count))
+	func range(_ input: String) -> Range<String.Index> {
+		let matches = self.expression!.matches(in: input, options: [], range: NSMakeRange(0, input.characters.count))
 		
 		return matches[0].range.toRange(input)
 	}

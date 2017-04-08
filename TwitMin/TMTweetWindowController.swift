@@ -18,13 +18,13 @@ class TMTweetWindowController: NSWindowController {
 		self.tweetWindow.initialize()
     }
 	
-	func avatarImageDownloaded(username: String) {
-		dispatch_async(dispatch_get_main_queue()) {
+	func avatarImageDownloaded(_ username: String) {
+		DispatchQueue.main.async {
 			self.tweetWindow.updateAvatarImageView()
 		}
 	}
 	
-	override func showWindow(sender: AnyObject?) {
+	override func showWindow(_ sender: Any?) {
 		self.tweetWindow.windowWillShow()
 		
 		super.showWindow(sender)

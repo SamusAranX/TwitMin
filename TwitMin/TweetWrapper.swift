@@ -13,35 +13,35 @@ import CoreLocation
 
 class TweetWrapper: NSObject {
 	
-	class func getUserAvatar(account: ACAccount, completion: (NSImage?) -> ()) {
-		let documentsPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).first!
+	class func getUserAvatar(_ account: ACAccount, completion: (NSImage?) -> ()) {
+		let documentsPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!
 		
-		let imageURL = NSURL(fileURLWithPath: documentsPath).URLByAppendingPathComponent("avatar_\(account.username).png")
+		let imageURL = URL(fileURLWithPath: documentsPath).appendingPathComponent("avatar_\(account.username).png")
 		let imagePath = imageURL.path!
 		print(imagePath)
 		
 		let defaultsKey = "avatarURL_\(account.username)"
-		let fileManager = NSFileManager()
+		let fileManager = FileManager()
 		
-		let requestURL = NSURL(string: "https://api.twitter.com/1.1/users/show.json")
+		let requestURL = URL(string: "https://api.twitter.com/1.1/users/show.json")
 		let requestParameters = ["screen_name": account.username, "include_entities": "false"]
-		let getRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: requestURL, parameters: requestParameters)
+		let getRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, url: requestURL, parameters: requestParameters)
 		getRequest.account = account
 		
-		getRequest.performRequestWithHandler() {
+		getRequest.perform() {
 			(responseData, response, error) in
 			
 			do {
 				// We'll try to parse Twitter's response here
-				let responseObject = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.AllowFragments)
+				let responseObject = try JSONSerialization.jsonObject(with: responseData, options: JSONSerialization.ReadingOptions.allowFragments)
 				var avatarURLString = responseObject["profile_image_url_https"] as! String
 				let sizeRegex = RegEx("(_normal|_bigger|_mini)")
 				let sizeRange = sizeRegex!.range(avatarURLString)
-				avatarURLString = avatarURLString.stringByReplacingCharactersInRange(sizeRange, withString: "")
+				avatarURLString = avatarURLString.replacingCharacters(in: sizeRange, with: "")
 				
-				let savedURLString = NSUserDefaults.standardUserDefaults().stringForKey(defaultsKey)
+				let savedURLString = UserDefaults.standard.string(forKey: defaultsKey)
 				
-				if avatarURLString == savedURLString && fileManager.fileExistsAtPath(imagePath) {
+				if avatarURLString == savedURLString && fileManager.fileExists(atPath: imagePath) {
 					// Avatar hasn't changed
 					println("Using saved image for @\(account.username), avatar URL hasn't changed since last check")
 					let savedImage = NSImage(contentsOfFile: imagePath)
@@ -50,17 +50,17 @@ class TweetWrapper: NSObject {
 					// This is either the first check, or the Avatar URL has changed
 					// or the avatar image doesn't exist, so we'll have to re-download it
 					
-					let avatarURL = NSURL(string: avatarURLString)!
+					let avatarURL = URL(string: avatarURLString)!
 					
-					let imageRequest: NSURLRequest = NSURLRequest(URL: avatarURL)
-					let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+					let imageRequest: URLRequest = URLRequest(url: avatarURL)
+					let session = URLSession(configuration: URLSessionConfiguration.default)
 					
-					let dataTask = session.dataTaskWithRequest(imageRequest) {
+					let dataTask = session.dataTask(with: imageRequest, completionHandler: {
 						(data, response, error) in
 						
 						if error == nil && data != nil {
 							println("Got image for @\(account.username), writing URL to user defaults and saving image to disk")
-							NSUserDefaults.standardUserDefaults().setObject(avatarURLString, forKey: defaultsKey)
+							UserDefaults.standard.set(avatarURLString, forKey: defaultsKey)
 							let image = NSImage(data: data!)
 							image!.saveAsPngWithPath(imagePath)
 							completion(image)
@@ -75,7 +75,7 @@ class TweetWrapper: NSObject {
 							println("What?")
 							completion(nil)
 						}
-					}
+					}) 
 					dataTask.resume()
 				}
 			} catch {
@@ -85,11 +85,11 @@ class TweetWrapper: NSObject {
 		}
 	}
 	
-	class func tweet(account: ACAccount, text: String, location: CLLocation?, completion: (data: NSData!, response: NSHTTPURLResponse!, error: NSError!) -> Void) {
+	class func tweet(_ account: ACAccount, text: String, location: CLLocation?, completion: (data: Data!, response: HTTPURLResponse!, error: NSError!) -> Void) {
 		self.tweet(account, text: text, location: location, media: nil, completion: completion)
 	}
 	
-	class func tweet(account: ACAccount, text: String, location: CLLocation?, media: [String]?, completion: (data: NSData!, response: NSHTTPURLResponse!, error: NSError!) -> Void) {
+	class func tweet(_ account: ACAccount, text: String, location: CLLocation?, media: [String]?, completion: (data: Data!, response: HTTPURLResponse!, error: NSError!) -> Void) {
 		// Trim whitespace and newlines from the tweet text
 		let tweetText = text.trim()
 		
@@ -102,15 +102,15 @@ class TweetWrapper: NSObject {
 				parameters["long"] = String(location!.coordinate.longitude)
 			}
 			
-			var requestURL: NSURL!
+			var requestURL: URL!
 			if media == nil || media!.count == 0 {
-				requestURL = NSURL(string: "https://api.twitter.com/1.1/statuses/update.json")
+				requestURL = URL(string: "https://api.twitter.com/1.1/statuses/update.json")
 			} else if media != nil && media!.count > 0 {
-				requestURL = NSURL(string: "https://api.twitter.com/1.1/statuses/update_with_media.json")
+				requestURL = URL(string: "https://api.twitter.com/1.1/statuses/update_with_media.json")
 			}
 			
 			// Create a tweet post request
-			let postRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.POST, URL: requestURL, parameters: parameters)
+			let postRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.POST, url: requestURL, parameters: parameters)
 			postRequest.account = account // Use the passed account object for posting
 			
 //			if media != nil && media!.count > 0 {
@@ -120,7 +120,7 @@ class TweetWrapper: NSObject {
 //			}
 			
 			// Perform the request
-			postRequest.performRequestWithHandler(completion)
+			postRequest.perform(handler: completion)
 		} else {
 			// This should never be reached
 			println("Tweet is an empty string")

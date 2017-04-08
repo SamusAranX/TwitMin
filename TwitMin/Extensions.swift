@@ -9,16 +9,22 @@
 import Cocoa
 import CoreLocation
 
+/* Thingy to work around Apple's stupid decision to let NSWindow.print() take precedence over Swift.print()
+   I could count the number of people actually wanting to print when calling print() on one hand */
+func println<T>(_ value: T) {
+	print(value)
+}
+
 extension CLAuthorizationStatus {
 	func name() -> String {
 		switch self {
-		case CLAuthorizationStatus.Authorized:
+		case CLAuthorizationStatus.authorized:
 			return "Authorized"
-		case .Denied:
+		case .denied:
 			return "Denied"
-		case .NotDetermined:
+		case .notDetermined:
 			return "NotDetermined"
-		case .Restricted:
+		case .restricted:
 			return "Restricted"
 		}
 	}
@@ -32,7 +38,7 @@ extension CLPlacemark {
 
 extension String {
 	func trim() -> String {
-		return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+		return self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
 	}
 	
 	subscript (index: Int) -> String? {
@@ -40,29 +46,29 @@ extension String {
 			return nil
 		}
 		
-		let i = index.advancedBy(0)
+		let i = index.advanced(by: 0)
 //		let i = advance(self.startIndex, index)
 		return String(self[i])
 	}
 	
 	subscript (range: Range<Int>) -> String? {
-		if range.startIndex < 0 || range.endIndex > self.characters.count {
+		if range.lowerBound < 0 || range.upperBound > self.characters.count {
 			return nil
 		}
 		
-		let _range = Range(start: startIndex.advancedBy(range.startIndex), end: startIndex.advancedBy(range.endIndex))
-//		let _range = Range(start: advance(startIndex, range.startIndex), end: advance(startIndex, range.endIndex))
+//		let _range = Range(start: startIndex.advancedBy(range.startIndex), end: startIndex.advancedBy(range.endIndex))
+		let _range = Range(characters.index(startIndex, offsetBy: range.lowerBound) ..< characters.index(startIndex, offsetBy: range.upperBound))
 		
 		return self[_range]
 	}
 }
 
 extension NSRange {
-	func toRange(string: String) -> Range<String.Index> {
+	func toRange(_ string: String) -> Range<String.Index> {
 		// let startIndex = advance(string.startIndex, location)
-		let startIndex = string.startIndex.advancedBy(location)
+		let startIndex = string.characters.index(string.startIndex, offsetBy: location)
 		// let endIndex = advance(startIndex, length)
-		let endIndex = startIndex.advancedBy(length)
+		let endIndex = <#T##String.CharacterView corresponding to `startIndex`##String.CharacterView#>.index(startIndex, offsetBy: length)
 		
 		return startIndex..<endIndex
 	}
@@ -73,8 +79,8 @@ extension NSColor {
 		var hex = hexString
 		
 		if hex.hasPrefix("#") {
-			let substrIndex = hex.startIndex.advancedBy(1)
-			hex = hex.substringFromIndex(substrIndex)
+			let substrIndex = hex.characters.index(hex.startIndex, offsetBy: 1)
+			hex = hex.substring(from: substrIndex)
 		}
 		
 		let hexRegex = RegEx("^([0-9a-f]){3}$|^([0-9a-f]){6}$")
@@ -94,9 +100,9 @@ extension NSColor {
 			
 			var r: CUnsignedInt = 0, g: CUnsignedInt = 0, b: CUnsignedInt = 0
 			
-			NSScanner(string: redHex).scanHexInt(&r)
-			NSScanner(string: greenHex).scanHexInt(&g)
-			NSScanner(string: blueHex).scanHexInt(&b)
+			Scanner(string: redHex).scanHexInt32(&r)
+			Scanner(string: greenHex).scanHexInt32(&g)
+			Scanner(string: blueHex).scanHexInt32(&b)
 			
 			self.init(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: 1)
 		} else {
@@ -106,12 +112,12 @@ extension NSColor {
 }
 
 extension NSImage {
-	func saveAsPngWithPath(path: String) -> Bool {
-		var imageData = self.TIFFRepresentation
+	func saveAsPngWithPath(_ path: String) -> Bool {
+		var imageData = self.tiffRepresentation
 		let imageRep = NSBitmapImageRep(data: imageData!)
-		imageData = imageRep!.representationUsingType(NSBitmapImageFileType.NSPNGFileType, properties: ["": ""])
+		imageData = imageRep!.representation(using: NSBitmapImageFileType.PNG, properties: ["": ""])
 		
-		return imageData!.writeToFile(path, atomically: false)
+		return ((try? imageData!.write(to: URL(fileURLWithPath: path), options: [])) != nil)
 	}
 }
 
