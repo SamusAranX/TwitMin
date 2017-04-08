@@ -63,12 +63,12 @@
 /* Begin PBXFileReference section */
 		5600BE871B56BBA900FD5DB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		5600BE891B56C97300FD5DB9 /* UIColors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UIColors.plist; sourceTree = "<group>"; };
-		560855E01B28EE9D0081487C /* DDHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDHotKeyCenter.h; path = ../../../../GitHub/DDHotKey/DDHotKeyCenter.h; sourceTree = "<group>"; };
-		560855E11B28EE9D0081487C /* DDHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyCenter.m; path = ../../../../GitHub/DDHotKey/DDHotKeyCenter.m; sourceTree = "<group>"; };
-		560855E21B28EE9D0081487C /* DDHotKeyTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDHotKeyTextField.h; path = ../../../../GitHub/DDHotKey/DDHotKeyTextField.h; sourceTree = "<group>"; };
-		560855E31B28EE9D0081487C /* DDHotKeyTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyTextField.m; path = ../../../../GitHub/DDHotKey/DDHotKeyTextField.m; sourceTree = "<group>"; };
-		560855E41B28EE9D0081487C /* DDHotKeyUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDHotKeyUtilities.h; path = ../../../../GitHub/DDHotKey/DDHotKeyUtilities.h; sourceTree = "<group>"; };
-		560855E51B28EE9D0081487C /* DDHotKeyUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyUtilities.m; path = ../../../../GitHub/DDHotKey/DDHotKeyUtilities.m; sourceTree = "<group>"; };
+		560855E01B28EE9D0081487C /* DDHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHotKeyCenter.h; sourceTree = "<group>"; };
+		560855E11B28EE9D0081487C /* DDHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyCenter.m; sourceTree = "<group>"; };
+		560855E21B28EE9D0081487C /* DDHotKeyTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHotKeyTextField.h; sourceTree = "<group>"; };
+		560855E31B28EE9D0081487C /* DDHotKeyTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyTextField.m; sourceTree = "<group>"; };
+		560855E41B28EE9D0081487C /* DDHotKeyUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHotKeyUtilities.h; sourceTree = "<group>"; };
+		560855E51B28EE9D0081487C /* DDHotKeyUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyUtilities.m; sourceTree = "<group>"; };
 		561E196A1B55F58A009A8600 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		565033451B5743E800384BD8 /* RegEx.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = RegEx.playground; sourceTree = "<group>"; };
 		565427071B2B62EC00A721BD /* TMAboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMAboutWindowController.swift; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 				560855E41B28EE9D0081487C /* DDHotKeyUtilities.h */,
 				560855E51B28EE9D0081487C /* DDHotKeyUtilities.m */,
 			);
-			name = DDHotKey;
+			path = DDHotKey;
 			sourceTree = "<group>";
 		};
 		565F0C2B1B2773E8001A86A8 = {

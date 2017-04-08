@@ -9,11 +9,11 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "606FE978-23E4-48A3-BFE2-A01F307C31E1",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "BABDEDA06CCA87E16844780F7D9DC681C475B08E" : "..\/..\/GitHub\/DDHotKey",
+    "BABDEDA06CCA87E16844780F7D9DC681C475B08E" : "TwitMin\/TwitMin\/DDHotKey\/",
     "0B57DEB8374945F38F50DB679E4CF8568DC666B8" : "TwitMin\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "TwitMin",
-  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "TwitMin.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
