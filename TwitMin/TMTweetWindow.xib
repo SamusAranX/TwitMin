@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12118"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TMTweetWindowController" customModule="TwitMin" customModuleProvider="target">
@@ -14,33 +15,31 @@
         <window title="TwitMin" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5" customClass="TMTweetWindow" customModule="TwitMin" customModuleProvider="target">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="300" height="80"/>
+            <rect key="contentRect" x="196" y="240" width="300" height="100"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1440"/>
-            <value key="minSize" type="size" width="300" height="80"/>
-            <value key="maxSize" type="size" width="300" height="80"/>
+            <value key="minSize" type="size" width="300" height="100"/>
+            <value key="maxSize" type="size" width="300" height="100"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="300" height="80"/>
+                <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <visualEffectView blendingMode="behindWindow" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="tQM-21-ZhF">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="80"/>
+                    <visualEffectView blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="tQM-21-ZhF">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
                         <subviews>
                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2j-Lo-h6T">
-                                <rect key="frame" x="60" y="37" width="240" height="43"/>
+                                <rect key="frame" x="60" y="37" width="240" height="63"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="2sh-Xd-6Tr">
-                                    <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="63"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="bar" continuousSpellChecking="YES" allowsUndo="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="iOJ-aI-OHs">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
+                                        <textView drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="bar" continuousSpellChecking="YES" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="iOJ-aI-OHs">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="63"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="240" height="43"/>
+                                            <size key="minSize" width="240" height="63"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <color key="insertionPointColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="240" height="43"/>
-                                            <size key="maxSize" width="463" height="10000000"/>
                                             <connections>
                                                 <outlet property="delegate" destination="F0z-JX-Cv5" id="DiA-DC-VBB"/>
                                             </connections>
@@ -53,7 +52,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="7s6-Ac-kmr">
-                                    <rect key="frame" x="224" y="0.0" width="16" height="43"/>
+                                    <rect key="frame" x="224" y="0.0" width="16" height="63"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -80,8 +79,8 @@
                                             <action selector="accountListItemSelected:" target="F0z-JX-Cv5" id="bP1-FR-4OV"/>
                                         </connections>
                                     </popUpButton>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DDa-YI-E3o">
-                                        <rect key="frame" x="251" y="9" width="41" height="19"/>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDa-YI-E3o">
+                                        <rect key="frame" x="248" y="9" width="44" height="19"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="140" bezelStyle="round" id="ctz-FO-uct">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -89,7 +88,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2v4-0b-R2f" userLabel="Location Button">
-                                        <rect key="frame" x="223" y="7" width="20" height="20"/>
+                                        <rect key="frame" x="220" y="7" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="1ER-Z3-PsU"/>
                                             <constraint firstAttribute="width" constant="20" id="eIq-eD-8Kh"/>
@@ -103,7 +102,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mdb-0n-K8z" userLabel="Media Button">
-                                        <rect key="frame" x="195" y="7" width="20" height="20"/>
+                                        <rect key="frame" x="192" y="7" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="8kH-3K-Xaq"/>
                                             <constraint firstAttribute="width" constant="20" id="BpF-j8-T98"/>
@@ -129,7 +128,7 @@
                                 </constraints>
                             </customView>
                             <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Diy-5x-2jS">
-                                <rect key="frame" x="10" y="20" width="50" height="50"/>
+                                <rect key="frame" x="10" y="40" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="hH8-x3-ONT"/>
                                 </constraints>
@@ -187,7 +186,7 @@ DQ
                         <nil key="toolTip"/>
                         <size key="minSize" width="80" height="17"/>
                         <size key="maxSize" width="84" height="17"/>
-                        <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="El4-8y-jWk">
+                        <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="El4-8y-jWk">
                             <rect key="frame" x="0.0" y="14" width="84" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="New Tweet" id="94z-Nq-cJs">
