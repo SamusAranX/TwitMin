@@ -1,3 +1,4 @@
 [submodule "DDHotKey"]
 	path = DDHotKey
 	url = https://github.com/davedelong/DDHotKey
+	ignore = dirty
