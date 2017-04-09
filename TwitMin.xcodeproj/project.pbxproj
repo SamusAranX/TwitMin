@@ -3,16 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		5600BE881B56BBA900FD5DB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5600BE871B56BBA900FD5DB9 /* Assets.xcassets */; };
 		5600BE8A1B56C97300FD5DB9 /* UIColors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5600BE891B56C97300FD5DB9 /* UIColors.plist */; };
-		560855E61B28EE9D0081487C /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 560855E11B28EE9D0081487C /* DDHotKeyCenter.m */; };
-		560855E71B28EE9D0081487C /* DDHotKeyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 560855E31B28EE9D0081487C /* DDHotKeyTextField.m */; };
-		560855E81B28EE9D0081487C /* DDHotKeyUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 560855E51B28EE9D0081487C /* DDHotKeyUtilities.m */; };
 		561E196B1B55F58A009A8600 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E196A1B55F58A009A8600 /* Extensions.swift */; };
+		5650645A1E99B60E00DBC79E /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5650644C1E99B60E00DBC79E /* DDHotKeyCenter.m */; };
+		5650645B1E99B60E00DBC79E /* DDHotKeyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5650644E1E99B60E00DBC79E /* DDHotKeyTextField.m */; };
+		5650645C1E99B60E00DBC79E /* DDHotKeyUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 565064501E99B60E00DBC79E /* DDHotKeyUtilities.m */; };
 		565427091B2B62EC00A721BD /* TMAboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565427071B2B62EC00A721BD /* TMAboutWindowController.swift */; };
 		5654270A1B2B62EC00A721BD /* TMAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 565427081B2B62EC00A721BD /* TMAboutWindow.xib */; };
 		5654270D1B2B77AC00A721BD /* TMTweetWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5654270B1B2B77AC00A721BD /* TMTweetWindowController.swift */; };
@@ -63,14 +63,14 @@
 /* Begin PBXFileReference section */
 		5600BE871B56BBA900FD5DB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		5600BE891B56C97300FD5DB9 /* UIColors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UIColors.plist; sourceTree = "<group>"; };
-		560855E01B28EE9D0081487C /* DDHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHotKeyCenter.h; sourceTree = "<group>"; };
-		560855E11B28EE9D0081487C /* DDHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyCenter.m; sourceTree = "<group>"; };
-		560855E21B28EE9D0081487C /* DDHotKeyTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHotKeyTextField.h; sourceTree = "<group>"; };
-		560855E31B28EE9D0081487C /* DDHotKeyTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyTextField.m; sourceTree = "<group>"; };
-		560855E41B28EE9D0081487C /* DDHotKeyUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHotKeyUtilities.h; sourceTree = "<group>"; };
-		560855E51B28EE9D0081487C /* DDHotKeyUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyUtilities.m; sourceTree = "<group>"; };
 		561E196A1B55F58A009A8600 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		565033451B5743E800384BD8 /* RegEx.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = RegEx.playground; sourceTree = "<group>"; };
+		5650644B1E99B60E00DBC79E /* DDHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHotKeyCenter.h; sourceTree = "<group>"; };
+		5650644C1E99B60E00DBC79E /* DDHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyCenter.m; sourceTree = "<group>"; };
+		5650644D1E99B60E00DBC79E /* DDHotKeyTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHotKeyTextField.h; sourceTree = "<group>"; };
+		5650644E1E99B60E00DBC79E /* DDHotKeyTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyTextField.m; sourceTree = "<group>"; };
+		5650644F1E99B60E00DBC79E /* DDHotKeyUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHotKeyUtilities.h; sourceTree = "<group>"; };
+		565064501E99B60E00DBC79E /* DDHotKeyUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyUtilities.m; sourceTree = "<group>"; };
 		565427071B2B62EC00A721BD /* TMAboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMAboutWindowController.swift; sourceTree = "<group>"; };
 		565427081B2B62EC00A721BD /* TMAboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMAboutWindow.xib; sourceTree = "<group>"; };
 		5654270B1B2B77AC00A721BD /* TMTweetWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTweetWindowController.swift; sourceTree = "<group>"; };
@@ -83,14 +83,14 @@
 		565F0C3E1B2773E8001A86A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		565F0C441B2774C0001A86A8 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		565F0C741B279DC2001A86A8 /* TwitMin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TwitMin-Bridging-Header.h"; sourceTree = "<group>"; };
-		565F0C751B279DC2001A86A8 /* TwitterText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterText.h; sourceTree = "<group>"; };
-		565F0C761B279DC2001A86A8 /* TwitterText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterText.m; sourceTree = "<group>"; };
-		565F0C781B279DF4001A86A8 /* TwitterTextEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterTextEntity.h; sourceTree = "<group>"; };
-		565F0C791B279DF4001A86A8 /* TwitterTextEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterTextEntity.m; sourceTree = "<group>"; };
-		56605E7D1B55BEC60024838D /* TAAdaptiveSpaceItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAdaptiveSpaceItem.h; sourceTree = "<group>"; };
-		56605E7E1B55BEC60024838D /* TAAdaptiveSpaceItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAdaptiveSpaceItem.m; sourceTree = "<group>"; };
-		56605E801B55BEF40024838D /* TAAdaptiveSpaceItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAdaptiveSpaceItemView.h; sourceTree = "<group>"; };
-		56605E811B55BEF40024838D /* TAAdaptiveSpaceItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAdaptiveSpaceItemView.m; sourceTree = "<group>"; };
+		565F0C751B279DC2001A86A8 /* TwitterText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwitterText.h; path = TwitterText/TwitterText.h; sourceTree = "<group>"; };
+		565F0C761B279DC2001A86A8 /* TwitterText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwitterText.m; path = TwitterText/TwitterText.m; sourceTree = "<group>"; };
+		565F0C781B279DF4001A86A8 /* TwitterTextEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwitterTextEntity.h; path = TwitterText/TwitterTextEntity.h; sourceTree = "<group>"; };
+		565F0C791B279DF4001A86A8 /* TwitterTextEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwitterTextEntity.m; path = TwitterText/TwitterTextEntity.m; sourceTree = "<group>"; };
+		56605E7D1B55BEC60024838D /* TAAdaptiveSpaceItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TAAdaptiveSpaceItem.h; path = TAAdaptiveSpaceItem/TAAdaptiveSpaceItem.h; sourceTree = "<group>"; };
+		56605E7E1B55BEC60024838D /* TAAdaptiveSpaceItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TAAdaptiveSpaceItem.m; path = TAAdaptiveSpaceItem/TAAdaptiveSpaceItem.m; sourceTree = "<group>"; };
+		56605E801B55BEF40024838D /* TAAdaptiveSpaceItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TAAdaptiveSpaceItemView.h; path = TAAdaptiveSpaceItem/TAAdaptiveSpaceItemView.h; sourceTree = "<group>"; };
+		56605E811B55BEF40024838D /* TAAdaptiveSpaceItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TAAdaptiveSpaceItemView.m; path = TAAdaptiveSpaceItem/TAAdaptiveSpaceItemView.m; sourceTree = "<group>"; };
 		566319FE1B5DA3A40073A317 /* TMTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTextView.swift; sourceTree = "<group>"; };
 		566FCE131B584EFD003E2DFF /* RegEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegEx.swift; sourceTree = "<group>"; };
 		5685198E1B2F82BF0037C728 /* TMPreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPreferencesWindowController.swift; sourceTree = "<group>"; };
@@ -101,8 +101,8 @@
 		56B077041B5F8C96001D9676 /* TMPreferencesWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPreferencesWindow.swift; sourceTree = "<group>"; };
 		56D53F811B5ABBE100CF18AB /* TweetWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetWrapper.swift; sourceTree = "<group>"; };
 		56D7146E1B2E3BDF00201C73 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
-		56FA8BFA1B5C2B33009E166D /* PrefAccounts.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = PrefAccounts.scpt; sourceTree = "<group>"; };
-		56FA8BFB1B5C2B33009E166D /* PrefPrivacy.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = PrefPrivacy.scpt; sourceTree = "<group>"; };
+		56FA8BFA1B5C2B33009E166D /* PrefAccounts.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; name = PrefAccounts.scpt; path = AppleScripts/PrefAccounts.scpt; sourceTree = "<group>"; };
+		56FA8BFB1B5C2B33009E166D /* PrefPrivacy.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; name = PrefPrivacy.scpt; path = AppleScripts/PrefPrivacy.scpt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,15 +118,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		560855DF1B28EE840081487C /* DDHotKey */ = {
+		565064421E99B60E00DBC79E /* DDHotKey */ = {
 			isa = PBXGroup;
 			children = (
-				560855E01B28EE9D0081487C /* DDHotKeyCenter.h */,
-				560855E11B28EE9D0081487C /* DDHotKeyCenter.m */,
-				560855E21B28EE9D0081487C /* DDHotKeyTextField.h */,
-				560855E31B28EE9D0081487C /* DDHotKeyTextField.m */,
-				560855E41B28EE9D0081487C /* DDHotKeyUtilities.h */,
-				560855E51B28EE9D0081487C /* DDHotKeyUtilities.m */,
+				5650644B1E99B60E00DBC79E /* DDHotKeyCenter.h */,
+				5650644C1E99B60E00DBC79E /* DDHotKeyCenter.m */,
+				5650644D1E99B60E00DBC79E /* DDHotKeyTextField.h */,
+				5650644E1E99B60E00DBC79E /* DDHotKeyTextField.m */,
+				5650644F1E99B60E00DBC79E /* DDHotKeyUtilities.h */,
+				565064501E99B60E00DBC79E /* DDHotKeyUtilities.m */,
 			);
 			path = DDHotKey;
 			sourceTree = "<group>";
@@ -154,9 +154,9 @@
 			children = (
 				5600BE871B56BBA900FD5DB9 /* Assets.xcassets */,
 				56FA8BF91B5C2B25009E166D /* AppleScripts */,
+				565064421E99B60E00DBC79E /* DDHotKey */,
 				565F0C731B279D66001A86A8 /* TwitterText */,
 				56605E7C1B55BE190024838D /* TAAdaptiveSpaceItem */,
-				560855DF1B28EE840081487C /* DDHotKey */,
 				56A8C3771B2A3DD000699998 /* TwitMin.entitlements */,
 				5600BE891B56C97300FD5DB9 /* UIColors.plist */,
 				565F0C741B279DC2001A86A8 /* TwitMin-Bridging-Header.h */,
@@ -260,12 +260,13 @@
 				};
 			};
 			buildConfigurationList = 565F0C2F1B2773E8001A86A8 /* Build configuration list for PBXProject "TwitMin" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				English,
 			);
 			mainGroup = 565F0C2B1B2773E8001A86A8;
 			productRefGroup = 565F0C351B2773E8001A86A8 /* Products */;
@@ -301,22 +302,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				560855E61B28EE9D0081487C /* DDHotKeyCenter.m in Sources */,
 				566FCE141B584EFD003E2DFF /* RegEx.swift in Sources */,
 				569A364A1B2C624300FDF9D7 /* TMAboutWindow.swift in Sources */,
 				56D53F821B5ABBE100CF18AB /* TweetWrapper.swift in Sources */,
+				5650645B1E99B60E00DBC79E /* DDHotKeyTextField.m in Sources */,
 				565F0C381B2773E8001A86A8 /* AppDelegate.swift in Sources */,
-				560855E81B28EE9D0081487C /* DDHotKeyUtilities.m in Sources */,
 				5685198F1B2F82BF0037C728 /* TMPreferencesWindowController.swift in Sources */,
 				56605E821B55BEF40024838D /* TAAdaptiveSpaceItemView.m in Sources */,
 				56605E7F1B55BEC60024838D /* TAAdaptiveSpaceItem.m in Sources */,
 				566319FF1B5DA3A40073A317 /* TMTextView.swift in Sources */,
 				565F0C771B279DC2001A86A8 /* TwitterText.m in Sources */,
 				565427091B2B62EC00A721BD /* TMAboutWindowController.swift in Sources */,
-				560855E71B28EE9D0081487C /* DDHotKeyTextField.m in Sources */,
+				5650645A1E99B60E00DBC79E /* DDHotKeyCenter.m in Sources */,
 				56B077051B5F8C96001D9676 /* TMPreferencesWindow.swift in Sources */,
 				561E196B1B55F58A009A8600 /* Extensions.swift in Sources */,
 				565427101B2B814100A721BD /* TMTweetWindow.swift in Sources */,
+				5650645C1E99B60E00DBC79E /* DDHotKeyUtilities.m in Sources */,
 				5654270D1B2B77AC00A721BD /* TMTweetWindowController.swift in Sources */,
 				565F0C7A1B279DF4001A86A8 /* TwitterTextEntity.m in Sources */,
 			);
@@ -431,6 +432,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4YJ6956B5Q;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = TwitMin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				OTHER_LDFLAGS = "";
@@ -453,6 +455,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4YJ6956B5Q;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = TwitMin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				OTHER_LDFLAGS = "";

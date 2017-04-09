@@ -1,3 +1,6 @@
+[submodule "DDHotKey"]
+	path = DDHotKey
+	url = https://github.com/davedelong/DDHotKey
 [submodule "TwitMin/DDHotKey"]
 	path = TwitMin/DDHotKey
 	url = https://github.com/davedelong/DDHotKey
