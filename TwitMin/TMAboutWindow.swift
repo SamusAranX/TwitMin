@@ -15,10 +15,10 @@ extension NSAttributedString {
 		let range = NSMakeRange(0, attrString.length)
 		
 		attrString.beginEditing()
-		attrString.addAttribute(NSLinkAttributeName, value: url.absoluteString, range: range)
+		attrString.addAttribute(NSAttributedStringKey.link, value: url.absoluteString, range: range)
 		
-		attrString.addAttribute(NSForegroundColorAttributeName, value: NSColor.blue, range: range)
-		attrString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: range)
+        attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: NSColor.blue, range: range)
+        attrString.addAttribute(NSAttributedStringKey.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: range)
 		
 		attrString.endEditing()
 		
@@ -42,8 +42,8 @@ class TMAboutWindow: NSWindow {
 		paragraphStyle.lineSpacing = 1
 		paragraphStyle.alignment = NSTextAlignment.center
 
-		aboutText!.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, aboutText!.length))
-		aboutText!.addAttribute(NSFontAttributeName, value: NSFont.systemFont(ofSize: 11), range: NSMakeRange(0, aboutText!.length))
+        aboutText!.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, aboutText!.length))
+        aboutText!.addAttribute(NSAttributedStringKey.font, value: NSFont.systemFont(ofSize: 11), range: NSMakeRange(0, aboutText!.length))
 		
 		aboutTextLabel.allowsEditingTextAttributes = true
 		aboutTextLabel.attributedStringValue = aboutText!

@@ -15,17 +15,17 @@ class TMPreferencesWindow: NSWindow, NSToolbarDelegate {
 	}
 	
 	func windowWillShow() {
-		if !isVisible {
+//        if !isVisible {
 //			self.toolbar!.selectedItemIdentifier = self.toolbar!.items[0].itemIdentifier
-		}
+//        }
 	}
 	
 	@IBAction func toolbarItemSelected(_ sender: NSToolbarItem) {
 		println(sender.itemIdentifier)
 	}
 	
-	func toolbarSelectableItemIdentifiers(_ toolbar: NSToolbar) -> [String] {
-		var itemIdentifiers = [String]()
+	func toolbarSelectableItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+		var itemIdentifiers = [NSToolbarItem.Identifier]()
 		for item in toolbar.items {
 			itemIdentifiers.append(item.itemIdentifier)
 		}

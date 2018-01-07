@@ -78,9 +78,9 @@ class TMTweetWindow: NSWindow, NSWindowDelegate, NSTextViewDelegate, NSTextStora
 	
 	// Called in Tweet Window Controller
 	func initialize() {
-		self.titleVisibility = NSWindowTitleVisibility.hidden
+        self.titleVisibility = NSWindow.TitleVisibility.hidden
 		
-		self.appDelegate = NSApplication.shared().delegate as! AppDelegate
+		self.appDelegate = NSApplication.shared.delegate as! AppDelegate
 		
 		self.delegate = self
 		
@@ -94,7 +94,7 @@ class TMTweetWindow: NSWindow, NSWindowDelegate, NSTextViewDelegate, NSTextStora
 		self.tmTextView.textContainerInset = NSSize(width: 4, height: 8)
 		self.tmTextView.textStorage!.delegate = self
 		
-		self.registerForDraggedTypes(NSImage.imageTypes())
+		self.registerForDraggedTypes([.image])
 		
 		self.tmAccountPopUp.removeAllItems() // Remove Xcode's example items (Item 1, Item 2, etc.) from the popup button. (There has to be a better way of doing this)
 		self.tmAccountPopUp.addItems(withTitles: Array(appDelegate.accountDict.keys)) // Populate the account list
@@ -106,7 +106,7 @@ class TMTweetWindow: NSWindow, NSWindowDelegate, NSTextViewDelegate, NSTextStora
 	func updateAvatarImageView() {
 		let avatarImage = appDelegate.avatarDict[self.tmAccountPopUp.titleOfSelectedItem!]
 		if avatarImage == nil {
-			self.avatarView.image = NSImage(named: "DummyRect")
+			self.avatarView.image = #imageLiteral(resourceName: "DummyRect")
 		} else {
 			self.avatarView.image = appDelegate.avatarDict[self.tmAccountPopUp.titleOfSelectedItem!]
 		}
@@ -115,7 +115,7 @@ class TMTweetWindow: NSWindow, NSWindowDelegate, NSTextViewDelegate, NSTextStora
 	func windowWillShow() {
 		if !self.isVisible {
 			let systemAppearanceName = (UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light").lowercased()
-			let systemAppearance = systemAppearanceName == "dark" ? NSAppearance(named: NSAppearanceNameVibrantDark) : NSAppearance(named: NSAppearanceNameVibrantLight)
+            let systemAppearance = systemAppearanceName == "dark" ? NSAppearance(named: NSAppearance.Name.vibrantDark) : NSAppearance(named: NSAppearance.Name.vibrantLight)
 			self.appearance = systemAppearance
 			
 			self.tmTextView.string = ""
@@ -137,18 +137,15 @@ class TMTweetWindow: NSWindow, NSWindowDelegate, NSTextViewDelegate, NSTextStora
 	
 	func textDidChange(_ notification: Notification) {
 		// Trim whitespace and newlines from the tweet text
-		if let tweetText = self.tmTextView.string {
-			let trimmedTweetText = tweetText.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-			let remainingChars = TwitterText.remainingCharacterCount(trimmedTweetText)
-			self.tmTextLengthLabel.integerValue = remainingChars
-			
-			// Pretty sure that someone smarter than me could do this with Cocoa Bindings
-			// I didn't because Cocoa Bindings don't make any damn sense
-			self.tmTextLengthLabel.textColor = remainingChars >= 0 ? NSColor.labelColor : appDelegate.UIColorDict["TextLengthLabelRed"]
-			self.tmTweetButton.isEnabled = remainingChars < 140 && remainingChars >= 0
-		} else {
-			println("Tweet text is nil")
-		}
+		let tweetText = self.tmTextView.string
+        let trimmedTweetText = tweetText.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        let remainingChars = TwitterText.remainingCharacterCount(trimmedTweetText)
+        self.tmTextLengthLabel.integerValue = remainingChars
+        
+        // Pretty sure that someone smarter than me could do this with Cocoa Bindings
+        // I didn't because Cocoa Bindings don't make any damn sense
+        self.tmTextLengthLabel.textColor = remainingChars >= 0 ? NSColor.labelColor : appDelegate.UIColorDict["TextLengthLabelRed"]
+        self.tmTweetButton.isEnabled = remainingChars < 140 && remainingChars >= 0
 	}
 	
 	/*
@@ -177,15 +174,15 @@ class TMTweetWindow: NSWindow, NSWindowDelegate, NSTextViewDelegate, NSTextStora
 	override func textStorageDidProcessEditing(_ notification: Notification) {
 		let textStorage: NSTextStorage = notification.object as! NSTextStorage
 		let wholeRange = NSMakeRange(0, textStorage.length)
-		textStorage.removeAttribute(NSForegroundColorAttributeName, range: wholeRange)
-		textStorage.addAttribute(NSForegroundColorAttributeName, value: NSColor.labelColor, range: wholeRange)
+        textStorage.removeAttribute(NSAttributedStringKey.foregroundColor, range: wholeRange)
+        textStorage.addAttribute(NSAttributedStringKey.foregroundColor, value: NSColor.labelColor, range: wholeRange)
 		
 		let entities = TwitterText.entities(inText: textStorage.string) 
 		// println(entities)
 		for e in entities {
 			// Slightly darker blue on light background, slightly brighter blue on dark background
-			let entityColor = self.appearance == NSAppearance(named: NSAppearanceNameVibrantDark) ? NSColor(red:0.08, green:0.49, blue:0.98, alpha:1) : NSColor(calibratedRed:0.51, green:0.75, blue:0.99, alpha:1)
-			textStorage.addAttribute(NSForegroundColorAttributeName, value: entityColor, range: e.range)
+            let entityColor = self.appearance == NSAppearance(named: NSAppearance.Name.vibrantDark) ? NSColor(red:0.08, green:0.49, blue:0.98, alpha:1) : NSColor(calibratedRed:0.51, green:0.75, blue:0.99, alpha:1)
+            textStorage.addAttribute(NSAttributedStringKey.foregroundColor, value: entityColor, range: e.range)
 		}
 	}
 	
@@ -195,7 +192,7 @@ class TMTweetWindow: NSWindow, NSWindowDelegate, NSTextViewDelegate, NSTextStora
 	
 	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 		println("Authorization changed to \(status.name())")
-		self.locationButton.state = status == .authorized ? NSOnState : NSOffState
+		self.locationButton.state = status == .authorized ? .on : .off
 	}
 	
 	func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -215,12 +212,12 @@ class TMTweetWindow: NSWindow, NSWindowDelegate, NSTextViewDelegate, NSTextStora
 	*/
 	
 	@IBAction func locationButtonPressed(_ sender: NSButton) {
-		if sender.state == NSOnState {
+		if sender.state == .on {
 			self.locationManager.startUpdatingLocation()
 		} else {
 			self.locationManager.stopUpdatingLocation()
 		}
-		println("Use Location: \(sender.state == NSOnState)")
+		println("Use Location: \(sender.state == .on)")
 	}
 	
 	@IBAction func mediaImportButtonPressed(_ sender: NSButton) {
@@ -235,10 +232,10 @@ class TMTweetWindow: NSWindow, NSWindowDelegate, NSTextViewDelegate, NSTextStora
 		let selectedAccount = appDelegate.accountDict[self.tmAccountPopUp.titleOfSelectedItem!]
 		println(selectedAccount!)
 		
-		let tweetText = tmTextView.string!
-		let tweetLocation = (locationButton.isEnabled && locationButton.state == NSOnState) ? locationManager.location : nil
+		let tweetText = tmTextView.string
+		let tweetLocation = (locationButton.isEnabled && locationButton.state == .on) ? locationManager.location : nil
 		if TwitterText.remainingCharacterCount(tweetText) >= 0 && !tweetText.isEmpty {
-			TweetWrapper.tweet(selectedAccount!, text: tmTextView.string!, location: tweetLocation) {
+			TweetWrapper.tweet(selectedAccount!, text: tmTextView.string, location: tweetLocation) {
 				(responseData, response, error) in
 				
 				do {

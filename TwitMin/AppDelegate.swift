@@ -50,33 +50,57 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		}
 		
 		// Initialize the status bar icon
-		statusBarItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
+		statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 		statusBarItem.menu = statusBarMenu
-		let statusBarIcon = NSImage(named: "StatusBarIcon")
-		statusBarIcon!.isTemplate = true
+		let statusBarIcon = #imageLiteral(resourceName: "StatusBarIcon")
+		statusBarIcon.isTemplate = true
 		statusBarItem.button!.image = statusBarIcon
 		
 		// Get ahold of the window controllers
-		tweetWindowController = TMTweetWindowController(windowNibName: "TMTweetWindow")
-		preferencesWindowController = TMPreferencesWindowController(windowNibName: "TMPreferencesWindow")
-		aboutWindowController = TMAboutWindowController(windowNibName: "TMAboutWindow")
+        let tweetWindowControllerName = NSNib.Name("TMTweetWindow")
+        let preferencesWindowControllerName = NSNib.Name("TMPreferencesWindow")
+        let aboutWindowControllerName = NSNib.Name("TMAboutWindow")
+		tweetWindowController = TMTweetWindowController(windowNibName: tweetWindowControllerName)
+		preferencesWindowController = TMPreferencesWindowController(windowNibName: preferencesWindowControllerName)
+		aboutWindowController = TMAboutWindowController(windowNibName: aboutWindowControllerName)
 		
 		// Initialize the tweet window hotkey
 		hotKeyCenter = DDHotKeyCenter.shared()
-		let hotKeyOptionSet: NSEventModifierFlags = [.command, .shift]
+		let hotKeyOptionSet: NSEvent.ModifierFlags = [.command, .shift]
 		composeHotKey = DDHotKey(keyCode: UInt16(kVK_Return), modifierFlags: hotKeyOptionSet.rawValue, task: {
 			event in
 			
 			self.actuallyShowTweetWindow()
 		})
 		hotKeyCenter.register(composeHotKey)
+        
+        // Load AppleScripts
+        let asPath1 = Bundle.main.path(forResource: "PrefAccounts", ofType: "scpt")!
+        let asPath2 = Bundle.main.path(forResource: "PrefPrivacy", ofType: "scpt")!
+        let asURL1 = URL(fileURLWithPath: asPath1)
+        let asURL2 = URL(fileURLWithPath: asPath2)
+        accountsScript = NSAppleScript(contentsOf: asURL1, error: nil)
+        privacyScript = NSAppleScript(contentsOf: asURL2, error: nil)
 		
 		// Get all registered Twitter accounts
 		accountStore = ACAccountStore()
 		let accType = accountStore.accountType(withAccountTypeIdentifier: ACAccountTypeIdentifierTwitter)
+        
+        guard (accType != nil) else {
+            println("accType is nil, abandon all hope")
+            NSApp.terminate(self)
+            return
+        }
 		
-		accountStore.requestAccessToAccounts(with: accType, options: nil) {
+		accountStore.requestAccessToAccounts(with: accType!, options: nil) {
 			(granted, error) in
+            
+            guard (error != nil) else {
+                println("Error!")
+                println(error)
+                NSApp.terminate(self)
+                return
+            }
 			
 			if granted { // Access to Twitter accounts granted
 				let twitterAccounts = self.accountStore.accounts(with: accType) as! [ACAccount]
@@ -100,56 +124,50 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 						}
 					}
 				} else { // There are no Twitter accounts
-					let alert = self.prepareAlert("No Twitter accounts found",
-						message: "To use TwitMin, you'll need to have at least one Twitter account set up in OS X.\nTo do that, go to System Preferences → Internet Accounts.",
-						buttons: ["Quit", "Open System Preferences…"])
-					
-					let alertResult = alert.runModal()
-					switch(alertResult) {
-					case NSAlertFirstButtonReturn:
-						println("Quitting") // Do nothing, we'll quit in a second anyway
-					case NSAlertSecondButtonReturn:
-						println("Opening InternetAccounts.prefPane")
-						self.accountsScript.executeAndReturnError(nil)
-					default:
-						// what
-						println("what")
-					}
-					
-					NSApp.terminate(self)
+                    DispatchQueue.main.async {
+                        let alert = self.prepareAlert("No Twitter accounts found",
+                                                      message: "To use TwitMin, you'll need to have at least one Twitter account set up in macOS.\nTo do that, go to System Preferences → Internet Accounts.",
+                                                      buttons: ["Quit", "Open System Preferences…"])
+                        let alertResult = alert.runModal()
+                        switch(alertResult) {
+                        case .alertFirstButtonReturn:
+                            println("Quitting") // Do nothing, we'll quit in a second anyway
+                        case .alertSecondButtonReturn:
+                            println("Opening InternetAccounts.prefPane")
+                            self.accountsScript.executeAndReturnError(nil)
+                        default:
+                            // what
+                            println("what")
+                        }
+                        
+                        NSApp.terminate(self)
+                    }
 				}
 			} else { // Access denied
-				let alert = self.prepareAlert("Can't access Twitter",
-					message: "TwitMin needs access to Twitter in order to post tweets.\nGo to System Preferences → Security & Privacy → Privacy and allow TwitMin to access Twitter.",
-					buttons: ["Quit", "Open System Preferences…"])
-				
-				let alertResult = alert.runModal()
-				switch(alertResult) {
-				case NSAlertFirstButtonReturn:
-					println("Quitting") // Do nothing, we'll quit in a second anyway
-				case NSAlertSecondButtonReturn:
-					println("Opening Security.prefPane")
-					self.privacyScript.executeAndReturnError(nil)
-				default:
-					// what
-					println("what")
-				}
-				
-				NSApp.terminate(self)
+                DispatchQueue.main.async {
+                    let alert = self.prepareAlert("Can't access Twitter",
+                                                  message: "TwitMin needs access to Twitter in order to post tweets.\nGo to System Preferences → Security & Privacy → Privacy and allow TwitMin to access Twitter.",
+                                                  buttons: ["Quit", "Open System Preferences…"])
+                    let alertResult = alert.runModal()
+                    switch(alertResult) {
+                    case .alertFirstButtonReturn:
+                        println("Quitting") // Do nothing, we'll quit in a second anyway
+                    case .alertSecondButtonReturn:
+                        println("Opening Security.prefPane")
+                        self.privacyScript.executeAndReturnError(nil)
+                    default:
+                        // what
+                        println("what")
+                    }
+                    
+                    NSApp.terminate(self)
+                }
 			}
 		}
-		
-		// Load AppleScripts
-		let asPath1 = Bundle.main.path(forResource: "PrefAccounts", ofType: "scpt")!
-		let asPath2 = Bundle.main.path(forResource: "PrefPrivacy", ofType: "scpt")!
-		let asURL1 = URL(fileURLWithPath: asPath1)
-		let asURL2 = URL(fileURLWithPath: asPath2)
-		accountsScript = NSAppleScript(contentsOf: asURL1, error: nil)
-		privacyScript = NSAppleScript(contentsOf: asURL2, error: nil)
 	}
 	
 	// This method creates a ready-made NSAlert for us
-	// This isn't really needed, I just did this to minimize NSAlert-related code below
+	// This isn't really needed, I just did this to minimize NSAlert-related code
 	func prepareAlert(_ title: String, message: String, buttons: [String]) -> NSAlert {
 		let alert = NSAlert()
 		alert.alertStyle = .warning
@@ -161,10 +179,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		return alert
 	}
 	
-	func systemThemeChanged(_ notification: Notification) {
+	@objc func systemThemeChanged(_ notification: Notification) {
 		// If the user changes their system's color scheme, we'll know
         let systemAppearanceName = (UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light").lowercased()
-		let systemAppearance = systemAppearanceName == "dark" ? NSAppearance(named: NSAppearanceNameVibrantDark) : NSAppearance(named: NSAppearanceNameVibrantLight)
+		let systemAppearance = systemAppearanceName == "dark" ? NSAppearance(named: NSAppearance.Name.vibrantDark) : NSAppearance(named: NSAppearance.Name.vibrantLight)
 		
 		if tweetWindowController.window != nil && tweetWindowController.window!.isVisible {
 			tweetWindowController.window?.appearance = systemAppearance
