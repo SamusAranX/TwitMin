@@ -1,6 +1,8 @@
 # TwitMin
 A lightweight write-only Twitter client for OS X 10.10+
 
+**Update: Apple deprecated its Social framework in macOS 10.13, so TwitMin will not work on 10.13 and upwards. Twitter's replacement framework looks like a major PITA to integrate, so this project is pretty much dead.**
+
 ## Features
 * Support for multiple accounts
 * Basic text highlighting for @usernames, #hashtags, $cashtags, and URLs

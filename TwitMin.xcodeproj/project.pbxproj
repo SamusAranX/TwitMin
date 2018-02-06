@@ -109,8 +109,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				565690761B3A0F5D00B05E3C /* CoreLocation.framework in Frameworks */,
 				565F0C451B2774C0001A86A8 /* Social.framework in Frameworks */,
+				565690761B3A0F5D00B05E3C /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +137,7 @@
 				565F0C441B2774C0001A86A8 /* Social.framework */,
 				565F0C361B2773E8001A86A8 /* TwitMin */,
 				565F0C351B2773E8001A86A8 /* Products */,
+				56CA26E42013E60200320492 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -201,6 +202,13 @@
 				56605E811B55BEF40024838D /* TAAdaptiveSpaceItemView.m */,
 			);
 			name = TAAdaptiveSpaceItem;
+			sourceTree = "<group>";
+		};
+		56CA26E42013E60200320492 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		56FA8BF91B5C2B25009E166D /* AppleScripts */ = {
@@ -378,7 +386,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -425,7 +433,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
